@@ -7,8 +7,9 @@
         "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
         "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
     ],
-    "dependencies": {
-        "protractor": "~1.0.0"
+    "devDependencies": {
+        "protractor": "~1.0.0",
+        "phantomjs": "^1.9.7"
     },
     "scripts": {
         "test" : "npm run protractor",

@@ -5,6 +5,10 @@ exports.config = {
     'specs/*.js'
   ],
 
+  capabilities: {
+    'browserName': 'phantomjs'
+  },
+
   baseUrl: 'http://localhost:3000/',
 
   jasmineNodeOpts: {
