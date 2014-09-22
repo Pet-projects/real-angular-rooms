@@ -6,6 +6,8 @@
     "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
   ],
   "dependencies": {
-    "angular": "1.2.25"   
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "bootstrap": "3.2.x"
   }
 }
