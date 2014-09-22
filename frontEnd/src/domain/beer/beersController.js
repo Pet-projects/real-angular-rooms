@@ -4,4 +4,8 @@ beerModule.controller('BeersController', ['$scope', 'BeerService', function($sco
 	
 	$scope.beers = beerService.getBeers();
 
+	$scope.removeBeer = function(id) {
+		beerService.deleteBeer(id);
+	};
+
 }]);
