@@ -1,0 +1,18 @@
+<h1>Beers available</h1>
+
+<table ng-controller="BeersController" class="table table-striped table-hover" >
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Brewery</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="beer in beers">
+      <td>1</td>
+      <td>{{ beer.name }}</td>
+      <td>{{ beer.brewery }}</td>
+    </tr>                 
+  </tbody>
+</table>
