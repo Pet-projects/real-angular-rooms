@@ -5,7 +5,9 @@ exports.config = {
         'specs/*.js'
     ],
 
-  
+    capabilities: {
+        'browserName': 'phantomjs'
+    },
 
     chromeOnly: false,
     onPrepare: function () {
