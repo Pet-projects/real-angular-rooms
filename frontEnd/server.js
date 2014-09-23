@@ -1,5 +1,6 @@
 var startStopDaemon = require('start-stop-daemon');
 var applauncher = require('./app-express');
+var config = require('./config');
 
 // connection configuration to pass on to couchbase.connect(). Note that
 // while connecting with the server we are also opening the late rooms website
@@ -15,6 +16,6 @@ var daemonConfig = {
 if (require.main == module) {
     startStopDaemon(daemonConfig, function() {
         console.log('Starting application');
-        applauncher.start();
+        applauncher.start(config);
     });
 }

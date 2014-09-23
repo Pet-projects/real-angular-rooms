@@ -1,5 +1,5 @@
 {
-    "name": "LateRooms Api",
+    "name": "LateRooms_backend",
     "version": "0.0.1",
     "description": "Api to handle LateRooms requests.",
     "author": "Matt Davies=",
@@ -8,6 +8,7 @@
         "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
     ],
     "dependencies": {
+        "start-stop-daemon": "0.1.0",
         "restify": "2.8.2"
     },
     "scripts": {

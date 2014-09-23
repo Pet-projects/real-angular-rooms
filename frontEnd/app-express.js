@@ -2,28 +2,35 @@
 var morgan = require('morgan');
 var express = require('express');
 var bodyParser = require('body-parser');
+var proxy = require('express-http-proxy');
 var methodOverride = require('method-override');
 
-exports.start = function(config, errorCallback) {
+exports.start = function(config) {
     var app = module.exports = express();
     var server = require('http').Server(app);
 
-    // Configuration
+    //Logging
     app.use(morgan('dev'));
-    app.use(express.static(__dirname + '/public'));
 
+    //Static content
+    app.use(express.static(__dirname + '/public'));
     var index = function(req, res) {
         res.sendFile(__dirname + "/public/index.html");
     };
 
     // Routes
-    app.get('/', index);
+    app.use('/api', proxy(config.backend.address, {
+        forwardPath: function(req, res) {
+            return require('url').parse(req.url).path;
+        }
+    }));
 
-    // redirect all others to the index (HTML5 history)
+    // redirect all  to the index (HTML5 history)
+    app.get('/', index);
     app.get('*', index);
 
     // Start server
-    server.listen(3000, function() {
+    server.listen(config.port, function() {
         console.log("Express server listening on port %d", server.address().port);
     });
 };

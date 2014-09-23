@@ -12,7 +12,8 @@
         "morgan": ">=1.2.3",
         "express": ">=2.5.10",
         "method-override": "*",
-        "body-parser": "*"
+        "body-parser": "*",
+        "express-http-proxy": "0.2.2"
     },
     "devDependencies": {
         "bower": "^1.3.1"
