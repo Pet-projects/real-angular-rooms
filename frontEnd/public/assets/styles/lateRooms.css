@@ -2,3 +2,13 @@
     border: 0 none;
     box-shadow: none;
 }
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}	
+
+.pointer { 
+	cursor: pointer; 
+}
