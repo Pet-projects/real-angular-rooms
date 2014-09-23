@@ -5,6 +5,10 @@ angular.module('lateRooms', [
 
 config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
+    $routeProvider.when('/',       { 
+        templateUrl: '/app/domain/landingPage/landingPage.html'
+    });
+
     $routeProvider.when('/rooms',     	{ 
 		templateUrl: '/app/domain/room/rooms.html', 
     	controller: 'RoomsController' 
@@ -20,7 +24,7 @@ config(['$routeProvider', '$locationProvider', function ($routeProvider, $locati
         controller: 'RoomController' 
     });
 
-    $routeProvider.otherwise({ redirectTo: '/rooms' });
+    $routeProvider.otherwise({ redirectTo: '/' });
     
     $locationProvider.html5Mode(true);
 }]);
