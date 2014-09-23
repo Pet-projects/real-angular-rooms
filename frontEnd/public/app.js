@@ -6,7 +6,7 @@ angular.module('beerApp', [
 config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
 
     $routeProvider.when('/beers',     	{ 
-		templateUrl: '/src/domain/beer/beers.html', 
+		templateUrl: '/domain/beer/beers.html',
     	controller: 'BeersController' 
     });
 
