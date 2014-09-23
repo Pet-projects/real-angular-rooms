@@ -47,10 +47,15 @@ function performTest {
     inTest "npm test"
 }
 
+function performLogs {
+    inFront "cat ./log/appOutFile.log"
+    inFront "cat ./log/appErrFile.log"
+}
+
 ####### The arguments
 function usage {
 cat << EOF
-usage: $0 [options] <install|start|stop|test>
+usage: $0 [options] <install|start|stop|test|show-logs>
 
 Control the app
 EOF
@@ -73,6 +78,9 @@ case "$1" in
       ;;
    "test")
       performTest
+      ;;
+   "show-logs")
+      performLogs
       ;;
    ?)
      usage

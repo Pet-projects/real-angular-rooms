@@ -15,5 +15,4 @@ script:
   - ./run.sh start
   - ./run.sh test
   - ./run.sh stop
-  - cat ./frontEnd/log/appOutFile.log
-  - cat ./frontEnd/log/appErrFile.log
+  - ./run.sh show-logs
