@@ -5,11 +5,19 @@ var startApp = function() {
     var finalhandler = require('finalhandler');
     var serveStatic = require('serve-static');
 
+    var morgan = require('morgan')
+    var logger = morgan('combined')
+
     var serve = serveStatic("./");
 
     var server = http.createServer(function(req, res){
         var done = finalhandler(req, res)
-        serve(req, res, done)
+        logger(req, res, function (err) {
+            if (err) return done(err)
+
+            // respond to request
+            serve(req, res, done);
+        })
     });
 
     server.listen(3000);
