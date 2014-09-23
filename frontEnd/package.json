@@ -1,7 +1,7 @@
 {
-    "name": "BeerApp",
+    "name": "LateRooms",
     "version": "0.0.1",
-    "description": "App to display beers.",
+    "description": "LateRooms website.",
     "author": "Matt Davies=",
     "contributors": [
         "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",

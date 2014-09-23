@@ -1,3 +1,3 @@
-angular.module('beerApp.domain', [
-  'beerApp.domain.beer'
+angular.module('lateRooms.domain', [
+  'lateRooms.domain.room'
 ]);

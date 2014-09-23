@@ -1,17 +1,26 @@
-angular.module('beerApp', [
+angular.module('lateRooms', [
   'ngRoute',
-  'beerApp.domain'
+  'lateRooms.domain'
 ]).
 
-config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
-    $routeProvider.when('/beers',     	{ 
-		templateUrl: '/domain/beer/beers.html',
-    	controller: 'BeersController' 
+    $routeProvider.when('/rooms',     	{ 
+		templateUrl: '/src/domain/room/rooms.html', 
+    	controller: 'RoomsController' 
     });
 
-    $routeProvider.otherwise({ redirectTo: '/beers' });
+    $routeProvider.when('/rooms/new',     	{ 
+		templateUrl: '/src/domain/room/room.html', 
+    	controller: 'RoomController' 
+    });
 
+    $routeProvider.when('/rooms/edit/:id',      { 
+        templateUrl: '/src/domain/room/room.html', 
+        controller: 'RoomController' 
+    });
 
+    $routeProvider.otherwise({ redirectTo: '/rooms' });
+    
     $locationProvider.html5Mode(true);
 }]);

@@ -1,13 +1,15 @@
 <!doctype html>
-<html ng-app="beerApp">
+<html ng-app="lateRooms">
 <head>
-    <title>Beer App</title>
+    <title>LateRooms.com</title>
 
     <base href="/">
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container"> 
+        <h1>LateRooms.com</h1>
+        <br>
 		<div ng-view></div>
 	</div>
     
@@ -16,7 +18,8 @@
 
     <script src="app.js"></script>
     <script src="domain/domain.js"></script>
-    <script src="domain/beer/beersController.js"></script>
-    <script src="domain/beer/beerService.js"></script>
+    <script src="domain/room/roomsController.js"></script>
+    <script src="domain/room/roomController.js"></script>
+    <script src="domain/room/roomService.js"></script>
 </body>
 </html>

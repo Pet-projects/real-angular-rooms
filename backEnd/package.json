@@ -1,0 +1,16 @@
+{
+    "name": "LateRooms Api",
+    "version": "0.0.1",
+    "description": "Api to handle LateRooms requests.",
+    "author": "Matt Davies=",
+    "contributors": [
+        "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
+        "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
+    ],
+    "dependencies": {
+        "restify": "2.8.2"
+    },
+    "scripts": {
+        "start" : "node server.js start"
+    }
+}

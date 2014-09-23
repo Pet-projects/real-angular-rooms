@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "BeerApp",
     "version": "0.0.1",
     "authors": [
@@ -10,4 +11,17 @@
         "angular-route": "1.2.x",
         "bootstrap": "3.2.x"
     }
+=======
+  "name": "LateRooms",
+  "version": "0.0.1",
+  "authors": [
+    "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
+    "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
+  ],
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "bootstrap": "3.2.x"
+  }
+>>>>>>> 5fba89d5d7dd4a4e9373b45ac7212bc4ec745cee
 }
