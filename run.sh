@@ -31,19 +31,30 @@ function performInstall {
     inTest "npm install"
 }
 
-
-function performTest {
+function performStart {
     inFront "npm start"
     sleep 1
     inFront "npm run status"
-    inTest "npm test"
+    curl http://localhost:3000
+}
+
+
+function performStop {
     inFront "npm stop"
+}
+
+function performTest {
+    performStart
+
+    inTest "npm test"
+
+    performStop
 }
 
 ####### The arguments
 function usage {
 cat << EOF
-usage: $0 [options] <install|test>
+usage: $0 [options] <install|start|stop|test>
 
 Control the app
 EOF
@@ -57,6 +68,12 @@ fi
 case "$1" in
    "install")
       performInstall
+      ;;
+   "start")
+      performStart
+      ;;
+   "stop")
+      performStop
       ;;
    "test")
       performTest
