@@ -1,4 +1,4 @@
 {
-  "directory": "public/libs",
+  "directory": "public/bower_components",
   "interactive": false
 }
