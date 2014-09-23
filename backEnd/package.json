@@ -12,6 +12,8 @@
         "restify": "2.8.2"
     },
     "scripts": {
-        "start" : "node server.js start"
+        "start" : "node server.js start",
+        "stop" : "node server.js stop",
+        "status": "node server.js status"
     }
 }
