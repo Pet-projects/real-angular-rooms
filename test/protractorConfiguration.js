@@ -1,17 +1,26 @@
 exports.config = {
-  allScriptsTimeout: 11000,
+    allScriptsTimeout: 11000,
 
-  specs: [
-    'specs/*.js'
-  ],
+    specs: [
+        'specs/*.js'
+    ],
 
-  capabilities: {
-    'browserName': 'phantomjs'
-  },
+    capabilities: {
+        'browserName': 'phantomjs'
+    },
 
-  baseUrl: 'http://localhost:3000/',
+    chromeOnly: false,
+    onPrepare: function () {
+        browser.driver.manage().window().setSize(1600, 800);
+    },
 
-  jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
-  }
+
+    baseUrl: 'http://localhost:3000/',
+
+    framework: 'jasmine',
+
+
+    jasmineNodeOpts: {
+        defaultTimeoutInterval: 30000
+    }
 };

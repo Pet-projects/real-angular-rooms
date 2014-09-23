@@ -8,5 +8,11 @@ cache:
     - frontEnd/bower_components
     - test/node_modules
 
+install:
+  - ./run.sh install
+
 script:
-  - ./.ci_script.sh
+  - ./run.sh start
+  - ./run.sh test
+  - ./run.sh stop
+  - ./run.sh show-logs
