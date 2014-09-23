@@ -5,7 +5,7 @@ describe('As a owner', function() {
   describe("when I go to the list of rooms", function() {
 
     beforeEach(function() {
-      	browser.get('/');
+      	browser.get('/rooms');
     });
 
     it('I should see 5 rooms', function() {
