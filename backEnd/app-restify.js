@@ -13,7 +13,7 @@ exports.start = function(config) {
             { id: 5, name: "Premium", address: "Piccadilly" }];
 
 
-        res.send(200,JSON.stringify(rooms));
+        res.send(200, rooms);
         return next();
     });
 

@@ -3,8 +3,11 @@ var roomModule = angular.module('lateRooms.domain.room',[]);
 roomModule.controller('RoomsController', 
 	['$scope', '$location', 'RoomService', 
 	function($scope, $location, roomService) {
-	
-	$scope.rooms = roomService.getRooms();
+
+
+    roomService.callForRooms().then(function(data) {
+        $scope.rooms = data;
+    });
 
 	$scope.removeRoom = function(id) {
 		roomService.removeRoom(id);

@@ -50,7 +50,7 @@ function performStart {
 
 function performStop {
     inFront "npm stop"
-    inBack "npm start"
+    inBack "npm stop"
 }
 
 function performTest {
