@@ -3,7 +3,7 @@ angular.module('beerApp', [
   'beerApp.domain'
 ]).
 
-config(['$routeProvider', function ($routeProvider) {
+config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
 
     $routeProvider.when('/beers',     	{ 
 		templateUrl: '/src/domain/beer/beers.html', 
@@ -12,4 +12,6 @@ config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider.otherwise({ redirectTo: '/beers' });
 
+
+    $locationProvider.html5Mode(true);
 }]);
