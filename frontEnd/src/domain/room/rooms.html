@@ -1,0 +1,32 @@
+<h2>Rooms available</h2>
+
+<table ng-controller="RoomsController" class="table table-striped table-hover" >
+  <thead>
+    <tr>
+      <th class="col-md-1">Id</th>
+      <th class="col-md-4">Name</th>
+      <th class="col-md-5">Address</th>
+      <th class="col-md-2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="room in rooms">
+      <td>{{ room.id }}</td>
+      <td>{{ room.name }}</td>
+      <td>{{ room.address }}</td>
+      <td>
+        <a ng-click="editRoom(room.id)" id="btnEditRoom" class="btn btn-primary" href="#">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+        
+        <a ng-click="removeRoom(room.id)" id="btnRemoveRoom" class="btn btn-warning" href="#">
+          <i class="glyphicon glyphicon-minus"></i>
+        </a>        
+      </td>      
+    </tr>                 
+  </tbody>
+</table>
+
+<a ng-click="newRoom()" id="btnNewRoom" class="btn btn-primary" href="#">
+  <i class="glyphicon glyphicon-plus"></i>
+</a>  

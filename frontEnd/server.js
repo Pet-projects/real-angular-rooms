@@ -17,7 +17,7 @@ var startApp = function() {
 
 
 // connection configuration to pass on to couchbase.connect(). Note that
-// while connecting with the server we are also opening the beer-sample
+// while connecting with the server we are also opening the late rooms website
 // bucket.
 
 var daemonConfig = {
