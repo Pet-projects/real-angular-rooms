@@ -11,6 +11,10 @@ cd ..
 # Wait until app starts
 sleep 1
 
+# Output the startup logs
+cat "./frontEnd/log/*.log"
+
+
 # Test the app
 cd "./test"
 npm install
