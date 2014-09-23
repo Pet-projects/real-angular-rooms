@@ -44,11 +44,7 @@ function performStop {
 }
 
 function performTest {
-    performStart
-
     inTest "npm test"
-
-    performStop
 }
 
 ####### The arguments
