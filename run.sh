@@ -35,7 +35,7 @@ function performStart {
     inFront "npm start"
     sleep 1
     inFront "npm run status"
-    curl http://localhost:3000/#/beers
+    curl 'http://localhost:3000/#/beers'
 }
 
 
