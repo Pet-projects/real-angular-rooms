@@ -15,13 +15,13 @@ describe('As a owner', function() {
 
     });
 
-//    it('I should be able to delete the first room', function() {
-//
-//      	element(by.repeater('room in rooms').row(0)).$('#btnRemoveRoom').click()
-//
-//      	var roomList = element.all(by.repeater('room in rooms'));
-//      	expect(roomList.count()).toBe(4);
-//    });
+    xit('I should be able to delete the first room', function() {
+
+      	element(by.repeater('room in rooms').row(0)).$('#btnRemoveRoom').click()
+
+      	var roomList = element.all(by.repeater('room in rooms'));
+      	expect(roomList.count()).toBe(4);
+    });
 
     it('I should be able to go to edit room feature', function() {
         
