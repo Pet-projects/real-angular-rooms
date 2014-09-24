@@ -5,6 +5,7 @@ angular.module('lateRooms.domain.landingPage.directives')
             replace: true,
 
             scope: {
+                identifier: "@identifier",
                 route: "@route",
                 title: "@title",
                 description: "@description",
