@@ -8,11 +8,15 @@
         "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
     ],
     "devDependencies": {
+        "forever": "0.11.1",
         "protractor": "~1.3.0",
         "phantomjs": "^1.9.7"
     },
     "scripts": {
+        "pretest": "forever start node_modules/.bin/phantomjs --webdriver=localhost:9000",
         "test" : "npm run protractor",
+        "posttest": "forever stop node_modules/.bin/phantomjs",
+
         "update-webdriver": "webdriver-manager update",
         "preprotractor": "npm run update-webdriver",
         "protractor": "protractor protractorConfiguration.js"

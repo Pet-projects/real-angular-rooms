@@ -5,6 +5,8 @@ exports.config = {
         'specs/*.js'
     ],
 
+    seleniumAddress: 'http://localhost:9000',
+
     capabilities: {
         'browserName': 'phantomjs',
         'phantomjs.binary.path':'./node_modules/phantomjs/bin/phantomjs'
@@ -17,7 +19,6 @@ exports.config = {
 
 
     baseUrl: 'http://localhost:3000/',
-
     framework: 'jasmine',
 
 
