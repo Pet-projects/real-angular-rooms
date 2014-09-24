@@ -1,42 +1,24 @@
 <div class="row">
-  <div class="col-md-3 vcenter pointer">
-    <div ng-click="goToRooms()" id="goToRooms" 
-         class="thumbnail noBorder">
-      <div class="caption">
-        <h2>Rooms</h2>
-        <b>Create your hotel rooms</b>
-      </div>
-      <img src="/assets/images/hotel.jpg">
-    </div>
+  
+  <div featured-link route="/rooms" 
+    title="Rooms" 
+    description="Create your hotel rooms" 
+    image-path="/assets/images/hotel.jpg">
   </div><!--
-  --><div class="col-md-3 vcenter pointer">
-    <div ng-click="goToRates()" id="goToRates" 
-         class="thumbnail noBorder">
-      <div class="caption">
-        <h2>Rates & availability</h2>
-        <b>Set prices across your rooms</b>
-      </div>
-      <img src="/assets/images/rates.jpg">
-    </div>
+  --><div featured-link route="/rate" 
+    title="Rates & availability" 
+    description="Set prices across your rooms" 
+    image-path="/assets/images/rates.jpg">
   </div><!--
-  --><div class="col-md-3 vcenter pointer">
-    <div ng-click="goToSupplements()" id="goToSupplements" 
-         class="thumbnail noBorder">
-      <div class="caption">
-        <h2>Supplements</h2>
-        <b>Create your Supplements library</b>
-      </div>
-      <img src="/assets/images/library.jpg">
-    </div>
+  --><div featured-link route="/supplement" 
+    title="Supplements" 
+    description="Create your Supplements library" 
+    image-path="/assets/images/library.jpg">
   </div><!--
-  --><div class="col-md-3 vcenter pointer">
-    <div ng-click="goToCancellation()" id="goToCancellation" 
-         class="thumbnail noBorder">
-      <div class="caption">
-        <h2>Cancellation policies</h2>
-        <b>Create new terms and conditions</b>
-      </div>
-      <img src="/assets/images/cancellation.jpg">
-    </div>
+  --><div featured-link route="/cancellationPolicy" 
+    title="Cancellation policies" 
+    description="Create new terms and conditions" 
+    image-path="/assets/images/cancellation.jpg">
   </div>
+ 
 </div>

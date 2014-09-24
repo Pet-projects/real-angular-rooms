@@ -1,22 +1,8 @@
-var roomModule = angular.module('lateRooms.domain.landingPage',[]);
+var roomModule = angular.module('lateRooms.domain.landingPage', 
+	['lateRooms.domain.landingPage.directives']);
 
 roomModule.controller('LandingPageController', 
-	['$scope', '$location', 
-	function($scope, $location) {
+	['$scope',  
+	function($scope) {	
 	
-	$scope.goToRooms = function() {
-		$location.path( "/rooms" );
-	};
-
-	$scope.goToRates = function() {
-		$location.path( "/rate" );
-	};
-
-	$scope.goToSupplements = function() {
-		$location.path( "/supplement" );
-	};
-
-	$scope.goToCancellation = function() {
-		$location.path( "/cancellationPolicy" );
-	};
 }]);
