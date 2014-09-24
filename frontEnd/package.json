@@ -21,8 +21,8 @@
     "scripts": {
         "postinstall": "bower install",
 
-        "start" : "node server.js start",
-        "stop" : "node server.js stop",
-        "status": "node server.js status"
+        "start" : "node daemon.js start",
+        "stop" : "node daemon.js stop",
+        "status": "node daemon.js status"
     }
 }

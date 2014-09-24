@@ -1,21 +1,36 @@
-var startStopDaemon = require('start-stop-daemon');
-var applauncher = require('./app-express');
-var config = require('./config');
+// set up ======================================================================
+var morgan = require('morgan');
+var express = require('express');
+var bodyParser = require('body-parser');
+var proxy = require('express-http-proxy');
+var methodOverride = require('method-override');
 
-// connection configuration to pass on to couchbase.connect(). Note that
-// while connecting with the server we are also opening the late rooms website
-// bucket.
+exports.start = function(config) {
+    var app = module.exports = express();
+    var server = require('http').Server(app);
 
-var daemonConfig = {
-    outFile: './log/appOutFile.log',
-    errFile: './log/appErrFile.log',
-    max: 1 //the script will run 1 times at most
-};
+    //Logging
+    app.use(morgan('dev'));
 
-// Check if this file has been loaded directly from node. We don't want people require-ing this file.
-if (require.main == module) {
-    startStopDaemon(daemonConfig, function() {
-        console.log('Starting application');
-        applauncher.start(config);
+    //Static content
+    app.use(express.static(__dirname + '/public'));
+    var index = function(req, res) {
+        res.sendFile(__dirname + "/public/index.html");
+    };
+
+    // Routes
+    app.use('/api', proxy(config.backend.address, {
+        forwardPath: function(req, res) {
+            return require('url').parse(req.url).path;
+        }
+    }));
+
+    // redirect all  to the index (HTML5 history)
+    app.get('/', index);
+    app.get('*', index);
+
+    // Start server
+    server.listen(config.port, function() {
+        console.log("Express server listening on port %d", server.address().port);
     });
-}
+};

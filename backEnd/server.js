@@ -1,21 +1,12 @@
-var startStopDaemon = require('start-stop-daemon');
-var applauncher = require('./app-restify');
-var config = require('./config');
+// set up ======================================================================
+var restify = require('restify');
 
-// connection configuration to pass on to couchbase.connect(). Note that
-// while connecting with the server we are also opening the late rooms website
-// bucket.
+exports.start = function(config) {
+    var server = restify.createServer();
 
-var daemonConfig = {
-    outFile: './log/appOutFile.log',
-    errFile: './log/appErrFile.log',
-    max: 1 //the script will run 1 times at most
-};
+    require('./api/rooms')(server);
 
-// Check if this file has been loaded directly from node. We don't want people require-ing this file.
-if (require.main == module) {
-    startStopDaemon(daemonConfig, function() {
-        console.log('Starting application');
-        applauncher.start(config);
+    server.listen(config.port, function() {
+        console.log('%s listening at %s', server.name, server.url);
     });
-}
+};
