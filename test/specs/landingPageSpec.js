@@ -32,6 +32,19 @@ describe('As a client', function() {
       expect(browser.getCurrentUrl()).toContain('/cancellationPolicy');
     }); 
 
+    it('I should be able to go to the "tutorials" feature', function() {
+      $('[title*="Tutorials"]').click()
+
+      expect(browser.getCurrentUrl()).toContain('/tutorial');
+    });
+
+    it('I should be able to go to the "analytics" feature', function() {
+      $('[title*="Analytics"]').click()
+
+      expect(browser.getCurrentUrl()).toContain('/analytics');
+    }); 
+ 
+
   });  
 
 });

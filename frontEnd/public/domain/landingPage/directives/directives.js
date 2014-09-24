@@ -1,0 +1,1 @@
+angular.module('lateRooms.domain.landingPage.directives', []);

@@ -1,6 +1,6 @@
 angular.module('lateRooms.domain.landingPage.directives')
     
-    .directive('featuredLink', ['$location', function ($location) {
+    .directive('sectionCard', ['$location', function ($location) {
         return {
             replace: true,
 
@@ -11,7 +11,7 @@ angular.module('lateRooms.domain.landingPage.directives')
                 imagePath: "@imagePath"
             },
 
-            templateUrl: '/domain/landingPage/directives/featuredLink.html',
+            templateUrl: '/domain/landingPage/directives/sectionCard.html',
 
             link: function (scope, element, attributes) {
                 scope.goTo = function (route)

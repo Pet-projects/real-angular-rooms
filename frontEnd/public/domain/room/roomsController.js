@@ -1,24 +1,23 @@
-var roomModule = angular.module('lateRooms.domain.room',[]);
+angular.module('lateRooms.domain.room')
+	
+	.controller('RoomsController', 
+		['$scope', '$location', 'RoomService', 
+		function($scope, $location, roomService) {
 
-roomModule.controller('RoomsController', 
-	['$scope', '$location', 'RoomService', 
-	function($scope, $location, roomService) {
+	    roomService.callForRooms().then(function(data) {
+	        $scope.rooms = data;
+	    });
 
+		$scope.removeRoom = function(id) {
+			roomService.removeRoom(id);
+		};
 
-    roomService.callForRooms().then(function(data) {
-        $scope.rooms = data;
-    });
+		$scope.newRoom = function() {
+			$location.path( "/rooms/new" );
+		};
 
-	$scope.removeRoom = function(id) {
-		roomService.removeRoom(id);
-	};
-
-	$scope.newRoom = function() {
-		$location.path( "/rooms/new" );
-	};
-
-	$scope.editRoom = function(id) {
-		$location.path( "/rooms/edit/" + id );
-	};
+		$scope.editRoom = function(id) {
+			$location.path( "/rooms/edit/" + id );
+		};
 
 }]);

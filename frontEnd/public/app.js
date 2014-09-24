@@ -5,13 +5,16 @@ angular.module('lateRooms', [
 
 config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
+    $routeProvider.when('/analytics',       { 
+        templateUrl: '/domain/analytics/analytics.html'
+    });
+
     $routeProvider.when('/cancellationPolicy',       { 
         templateUrl: '/domain/cancellationPolicy/cancellationPolicy.html'
     });
 
     $routeProvider.when('/',       { 
-        templateUrl: '/domain/landingPage/landingPage.html',
-        controller: 'LandingPageController'
+        templateUrl: '/domain/landingPage/landingPage.html'
     });
 
     $routeProvider.when('/rate',       { 
@@ -35,6 +38,10 @@ config(['$routeProvider', '$locationProvider', function ($routeProvider, $locati
 
     $routeProvider.when('/supplement',       { 
         templateUrl: '/domain/supplement/supplement.html'
+    });
+
+    $routeProvider.when('/tutorial',       { 
+        templateUrl: '/domain/tutorial/tutorial.html'
     });
 
     $routeProvider.otherwise({ redirectTo: '/rooms' });
