@@ -42,8 +42,7 @@ describe('As a client', function() {
       $('[title*="Analytics"]').click()
 
       expect(browser.getCurrentUrl()).toContain('/analytics');
-    }); 
- 
+    });  
 
   });  
 
