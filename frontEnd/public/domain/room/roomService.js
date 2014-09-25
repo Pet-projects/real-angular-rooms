@@ -1,21 +1,18 @@
 angular.module('lateRooms.domain.room')
     
-    .factory('RoomService', ['$http', function ($http) {
+    .factory('RoomService', ['Restangular', function (restangular) {
+       
+       var domain = 'rooms';
+
        return {
 
             list: function() {
-                var promise = $http.get('api/rooms/list').then(function (response) {
-                    return response.data;
-                });
-                
-                return promise;
+                return restangular.all(domain).customGET('list');               
             },
 
-            remove: function (id) {                
-                var promise = $http.delete('api/rooms/delete/' + id);
-                
-                return promise;
+            remove: function (id) {
+                return restangular.one(domain).one('delete').customDELETE(id);
             }
-            
+
         };
     }]);
