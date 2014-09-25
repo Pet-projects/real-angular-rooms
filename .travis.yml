@@ -16,9 +16,8 @@ before_install:
   - sudo apt-get install libcouchbase2 libcouchbase-dev
 
   # Couchbase Server
-#  - sudo wget http://packages.couchbase.com/releases/2.0.0/couchbase-server-enterprise_x86_64_2.0.0.deb
-  - sudo wget http://packages.couchbase.com/releases/2.2.0/couchbase-server-enterprise_2.2.0_x86_64.deb
-  - sudo dpkg -i couchbase-server-enterprise_2.2.0_x86_64.deb
+  - sudo wget http://packages.couchbase.com/releases/2.0.0/couchbase-server-enterprise_x86_64_2.0.0.deb
+  - sudo dpkg -i couchbase-server-enterprise_x86_64_2.0.0.deb
   - sudo service couchbase-server start
 
   # Setup Bucket for test
