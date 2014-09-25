@@ -7,6 +7,9 @@
         "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
         "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
     ],
+    "dependencies": {
+        "request": "2.44.0"        
+    },
     "devDependencies": {
         "forever": "0.11.1",
         "protractor": "~1.3.0",

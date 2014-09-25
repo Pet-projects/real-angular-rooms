@@ -4,12 +4,16 @@ angular.module('lateRooms.domain.room')
 		['$scope', '$location', 'RoomService', 
 		function($scope, $location, roomService) {
 
-	    roomService.callForRooms().then(function(data) {
-	        $scope.rooms = data;
-	    });
+	    $scope.populateRoomsTable = function(id) {
+			roomService.list().then(function(data) {
+		        $scope.rooms = data;
+		    });
+		};
 
 		$scope.removeRoom = function(id) {
-			roomService.removeRoom(id);
+			roomService.remove(id).then(function() {
+		        $scope.populateRoomsTable();
+		    });
 		};
 
 		$scope.newRoom = function() {
@@ -20,4 +24,5 @@ angular.module('lateRooms.domain.room')
 			$location.path( "/rooms/edit/" + id );
 		};
 
+		$scope.populateRoomsTable();
 }]);

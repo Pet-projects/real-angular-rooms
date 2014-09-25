@@ -1,11 +1,17 @@
 'use strict';
 
+var request = require('request');
+
 describe('As a owner', function() {
   
   describe("when I go to the list of rooms", function() {
 
     beforeEach(function() {
-      	browser.get('/rooms');
+
+        request('http://localhost:3000/api/rooms/resetData');
+
+        browser.get('/rooms');
+
     });
 
     it('I should see 5 rooms', function() {
@@ -15,7 +21,7 @@ describe('As a owner', function() {
 
     });
 
-    xit('I should be able to delete the first room', function() {
+    it('I should be able to delete the first room', function() {
 
       	element(by.repeater('room in rooms').row(0)).$('#btnRemoveRoom').click()
 
