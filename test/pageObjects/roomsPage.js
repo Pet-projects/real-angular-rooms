@@ -1,10 +1,11 @@
 var request = require('request');
+var config = require('../config');
 
 roomsPage = function () { 
  	var me = this;
 
  	this.resetData = function() {
-       	request('http://localhost:3000/api/rooms/resetData');
+       	request(config.backend.address + 'rooms/resetData');
     };
 
     this.navigate = function() {
