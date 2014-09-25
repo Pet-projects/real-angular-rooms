@@ -1,6 +1,6 @@
 'use strict';
 
-var request = require('request');
+var roomsPage = require('../pageObjects/roomsPage');
 
 describe('As a owner', function() {
   
@@ -8,37 +8,35 @@ describe('As a owner', function() {
 
     beforeEach(function() {
 
-        request('http://localhost:3000/api/rooms/resetData');
-
-        browser.get('/rooms');
-
+        roomsPage.resetData();
+        roomsPage.navigate();
     });
 
     it('I should see 5 rooms', function() {
       
-      	var roomList = element.all(by.repeater('room in rooms'));
+      	var roomList = roomsPage.getListOfRooms();
       	expect(roomList.count()).toBe(5);
 
     });
 
     it('I should be able to delete the first room', function() {
 
-      	element(by.repeater('room in rooms').row(0)).$('#btnRemoveRoom').click()
+      	roomsPage.deleteRoomAtRow(0);
 
-      	var roomList = element.all(by.repeater('room in rooms'));
+      	var roomList = roomsPage.getListOfRooms();
       	expect(roomList.count()).toBe(4);
     });
 
     it('I should be able to go to edit room feature', function() {
         
-        element(by.repeater('room in rooms').row(0)).$('#btnEditRoom').click()
+        roomsPage.editRoomAtRow(0)
 
         expect(browser.getCurrentUrl()).toContain('/rooms/edit/1');
     });
 
     it('I should be able to go to the new room feature', function() {
         
-        $('#btnNewRoom').click()
+        roomsPage.newRoom.click()
 
         expect(browser.getCurrentUrl()).toContain('/rooms/new');
     });
