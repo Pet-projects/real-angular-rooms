@@ -9,6 +9,13 @@ cache:
     - test/node_modules
 
 before_install:
+  # LibCouchbase
+  - sudo wget -O/etc/apt/sources.list.d/couchbase.list http://packages.couchbase.com/ubuntu/couchbase-ubuntu1204.list
+  - "sudo wget http://packages.couchbase.com/ubuntu/couchbase.key && sudo cat couchbase.key | sudo apt-key add -"
+  - sudo apt-get update
+  - sudo apt-get install libcouchbase2 libcouchbase-dev
+
+  # Couchbase Server
   - sudo apt-get install -y libssl0.9.8
   - sudo wget http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb
   - sudo dpkg -i couchbase-server-enterprise_2.5.1_x86_64.deb
