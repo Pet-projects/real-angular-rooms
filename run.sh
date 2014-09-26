@@ -27,15 +27,24 @@ function inFront {
     inFolder "${SCRIPT_DIR}/frontEnd" "$1"
 }
 
+function inDb {
+    inFolder "${SCRIPT_DIR}/db" "$1"
+}
+
 function inTest {
     inFolder "${SCRIPT_DIR}/test" "$1"
 }
 
 
 function performInstall {
+    inDb "npm install"
     inBack "npm install"
     inFront "npm install"
     inTest "npm install"
+}
+
+function performDbSetup {
+    inDb "npm run db-setup"
 }
 
 function performStart {
@@ -69,7 +78,7 @@ function performLogs {
 ####### The arguments
 function usage {
 cat << EOF
-usage: $0 [options] <install|start|stop|test|show-logs>
+usage: $0 [options] <install|db-setup|start|stop|test|show-logs>
 
 Control the app
 EOF
@@ -83,6 +92,9 @@ fi
 case "$1" in
    "install")
       performInstall
+      ;;
+   "db-setup")
+      performDbSetup
       ;;
    "start")
       performStart

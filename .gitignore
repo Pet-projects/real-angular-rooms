@@ -3,3 +3,4 @@ bower_components
 node_modules
 */log/app*
 npm-debug.log
+private-config.js

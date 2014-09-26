@@ -8,7 +8,8 @@
         "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
     ],
     "dependencies": {
-        "request": "2.44.0"        
+        "request-promise": "0.2.0",
+        "rooms-database": "x"
     },
     "devDependencies": {
         "forever": "0.11.1",
@@ -16,7 +17,9 @@
         "phantomjs": "^1.9.7"
     },
     "scripts": {
-        "pretest": "forever start node_modules/.bin/phantomjs --webdriver=localhost:9000",
+        "preinstall": "npm install ../db",
+
+        "pretest": "npm install && forever start node_modules/.bin/phantomjs --webdriver=localhost:9000",
         "test" : "npm run protractor",
         "posttest": "forever stop node_modules/.bin/phantomjs",
 

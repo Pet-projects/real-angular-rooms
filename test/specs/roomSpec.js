@@ -1,12 +1,16 @@
 'use strict';
 
 var request = require('request');
+var database = require('rooms-database');
+
 
 describe('As a owner', function() {
   
   describe("when I go to the list of rooms", function() {
 
     beforeEach(function() {
+
+        database.purge();
 
         request('http://localhost:3000/api/rooms/resetData');
 
