@@ -51,43 +51,38 @@ function actionFlush(config) {
     return action;
 }
 
-function CouchBucket(config) {
-    this.bucketActions = {};
+//~~~~~~Exposing a public interface
 
-    this.bucketActions.retrieve = actionRetrieve(config);
-    this.bucketActions.delete = actionDelete(config);
-    this.bucketActions.create = actionCreate(config);
-    this.bucketActions.update = actionUpdate(config);
-    this.bucketActions.flush = actionFlush(config);
+function CouchBucket(config) {
+    this.config = config;
 }
 
 CouchBucket.prototype.ensureCreated = function() {
-    var bucket = this.bucketActions;
-    var _action = bucket.retrieve;
+    var _action = actionRetrieve(this.config);
 
     console.log('Making request: ' + _action.method + ' ' + _action.uri);
     request(_action)
-        .then(createRequest(bucket.update))
-        .catch(createRequest(bucket.create));
+        .then(createRequest(actionUpdate(this.config)))
+        .catch(createRequest(actionCreate(this.config)));
 };
 
 CouchBucket.prototype.create = function() {
-    var _request = createRequest(this.bucketActions.create);
+    var _request = createRequest(actionCreate(this.config));
     _request();
 };
 
 CouchBucket.prototype.update = function() {
-    var _request = createRequest(this.bucketActions.update);
+    var _request = createRequest(actionUpdate(this.config));
     _request();
 };
 
 CouchBucket.prototype.purge = function() {
-    var _request = createRequest(this.bucketActions.flush);
+    var _request = createRequest(actionFlush(this.config));
     _request();
 };
 
 CouchBucket.prototype.delete = function() {
-    var _request = createRequest(this.bucketActions.delete);
+    var _request = createRequest(actionDelete(this.config));
     _request();
 };
 
