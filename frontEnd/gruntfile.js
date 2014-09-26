@@ -14,7 +14,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'public/',
-            src: [ '**', '!**/**/*.js' ],
+            src: [ '**', '!**/**/*.js', '!public/bower_components/**' ],
             dest: 'dist'
           }          
         ]
