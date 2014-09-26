@@ -1,9 +1,11 @@
 angular.module('lateRooms', [
   'ngRoute',
+  'restangular',
   'lateRooms.domain'
 ]).
 
-config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+config(['$routeProvider', '$locationProvider', 'RestangularProvider', 
+    function ($routeProvider, $locationProvider, restangularProvider) {
 
     $routeProvider.when('/analytics',       { 
         templateUrl: '/domain/analytics/analytics.html'
@@ -47,4 +49,6 @@ config(['$routeProvider', '$locationProvider', function ($routeProvider, $locati
     $routeProvider.otherwise({ redirectTo: '/rooms' });
     
     $locationProvider.html5Mode(true);
+
+    restangularProvider.setBaseUrl('/api');
 }]);

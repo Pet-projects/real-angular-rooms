@@ -1,12 +1,10 @@
 // This is a configuration file
-var config = {};
+var config = {}
 
-config.testBucket={
-    adminUser: 'Administrator',
-    adminPassword: 'vt15gr8',
-    url: 'localhost:8091',
-    bucket: 'newbucket',
-    password: 'x'
-};
+config.backend = {};
+config.backend.address = "http://localhost:3000/api/";
+
+config.frontend = {};
+config.frontend.address = "http://localhost:3000/";
 
 module.exports = config;

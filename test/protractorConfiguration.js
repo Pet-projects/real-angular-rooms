@@ -1,3 +1,5 @@
+var config = require('./config');
+
 exports.config = {
     allScriptsTimeout: 11000,
 
@@ -17,8 +19,7 @@ exports.config = {
         browser.driver.manage().window().setSize(1600, 800);
     },
 
-
-    baseUrl: 'http://localhost:3000/',
+    baseUrl: config.frontend.address,
     framework: 'jasmine',
 
 
