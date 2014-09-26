@@ -2,55 +2,63 @@
 
 var request = require('request-promise');
 
+function AbstractCouchAction(config) {
+    this.auth = { 'user': config.adminUser, 'pass': config.adminPassword };
+    this.method = 'GET';
+    this.baseuri = 'http://' + config.url + '/pools/default/buckets';
+}
+
+function actionRetrieve(config) {
+    var action = new AbstractCouchAction(config);
+    action.method = 'GET';
+    action.uri = action.baseuri + '/' + config.bucket;
+    return action;
+}
+
+function actionDelete(config) {
+    var action = new AbstractCouchAction(config);
+    action.method = 'DELETE';
+    action.uri = action.baseuri + '/' + config.bucket;
+    return action;
+}
+
+function actionCreate(config) {
+    var action = new AbstractCouchAction(config);
+    action.method = 'POST';
+    action.form = {
+        name: config.bucket,
+        ramQuotaMB: 100,
+        authType: "sasl",
+        saslPassword: config.password,
+        replicaNumber: 0,
+        flushEnabled: 1
+    };
+    action.uri = action.baseuri;
+    return action;
+}
+
+function actionUpdate(config) {
+    var action = actionCreate(config);
+    action.uri = action.baseuri + '/' + config.bucket;
+    return action;
+}
+
+function actionFlush(config) {
+    var action = new AbstractCouchAction(config);
+    action.method = 'POST';
+    action.form = { };
+    action.uri = action.baseuri + '/' + config.bucket + '/controller/doFlush';
+    return action;
+}
+
 function CouchBucket(config) {
     this.bucketActions = {};
 
-    this.bucketActions.retrieve = {
-        auth: { 'user': config.adminUser, 'pass': config.adminPassword },
-        method: 'GET',
-        uri: 'http://' + config.url + '/pools/default/buckets/' + config.bucket
-    };
-
-    this.bucketActions.delete = {
-        auth: { 'user': config.adminUser, 'pass': config.adminPassword },
-        method: 'DELETE',
-        uri: 'http://' + config.url + '/pools/default/buckets/' + config.bucket
-    };
-
-    this.bucketActions.create = {
-        auth: { 'user': config.adminUser, 'pass': config.adminPassword },
-        method: 'POST',
-        form: {
-            name: config.bucket,
-            ramQuotaMB: 100,
-            authType: "sasl",
-            saslPassword: config.password,
-            replicaNumber: 0,
-            flushEnabled: 1
-        },
-        uri: 'http://' + config.url + '/pools/default/buckets'
-    };
-
-    this.bucketActions.update = {
-        auth: { 'user': config.adminUser, 'pass': config.adminPassword },
-        method: 'POST',
-        form: {
-            name: config.bucket,
-            ramQuotaMB: 100,
-            authType: "sasl",
-            saslPassword: config.password,
-            replicaNumber: 0,
-            flushEnabled: 1
-        },
-        uri: 'http://' + config.url + '/pools/default/buckets/' + config.bucket
-    };
-
-    this.bucketActions.flush = {
-        auth: { 'user': config.adminUser, 'pass': config.adminPassword },
-        method: 'POST',
-        form: { },
-        uri: 'http://' + config.url + '/pools/default/buckets/' + config.bucket + '/controller/doFlush'
-    };
+    this.bucketActions.retrieve = actionRetrieve(config);
+    this.bucketActions.delete = actionDelete(config);
+    this.bucketActions.create = actionCreate(config);
+    this.bucketActions.update = actionUpdate(config);
+    this.bucketActions.flush = actionFlush(config);
 }
 
 CouchBucket.prototype.ensureCreated = function() {
