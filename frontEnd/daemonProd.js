@@ -9,10 +9,10 @@ var config = require('./config');
 var daemonConfig = {
     outFile: './log/appOutFile.log',
     errFile: './log/appErrFile.log',
-    max: 1 //the script will run 1 times at most
+    max: 1 //the script will run 1 times at most    
 };
 
-config.appFolder = "/public";
+config.appFolder = "/prod";
 
 // Check if this file has been loaded directly from node. We don't want people require-ing this file.
 if (require.main == module) {
