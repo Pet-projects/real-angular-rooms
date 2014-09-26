@@ -6,13 +6,13 @@ exports = module.exports = function(server){
             { id: 4, name: "B&B ", address: "Westminster" },
             { id: 5, name: "Premium", address: "Piccadilly" }];
 
-	server.get('/rooms/list', function(req, res, next) {
+	server.get('/rooms', function(req, res, next) {
         
         res.send(200, rooms);
         return next();
     });
 
-    server.del('/rooms/delete/:id', function (req, res, next) {
+    server.del('/rooms/:id', function (req, res, next) {
         var id = parseInt(req.params.id);
         
         for (var i = 0; i < rooms.length; i++) {
