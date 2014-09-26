@@ -14,7 +14,8 @@ describe('As a owner', function() {
     });
 
     it('I should see 5 rooms', function() {
-      
+
+
       	var roomList = roomsPage.getListOfRooms();
       	expect(roomList.count()).toBe(5);
 

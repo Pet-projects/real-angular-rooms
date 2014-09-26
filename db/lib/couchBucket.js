@@ -5,7 +5,7 @@ var request = require('request-promise');
 function AbstractCouchAction(config) {
     this.auth = { 'user': config.adminUser, 'pass': config.adminPassword };
     this.method = 'GET';
-    this.baseuri = 'http://' + config.url + '/pools/default/buckets';
+    this.baseuri = 'http://' + config.host + '/pools/default/buckets';
 }
 
 function actionRetrieve(config) {
