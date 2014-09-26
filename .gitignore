@@ -1,5 +1,6 @@
 .idea
 bower_components
 node_modules
+dist
 */log/app*
 npm-debug.log
