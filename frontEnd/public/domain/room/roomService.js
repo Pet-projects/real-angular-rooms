@@ -7,11 +7,11 @@ angular.module('lateRooms.domain.room')
        return {
 
             list: function() {
-                return restangular.all(domain).customGET('list');               
+                return restangular.all(domain).getList();               
             },
 
             remove: function (id) {
-                return restangular.one(domain).one('delete').customDELETE(id);
+                return restangular.one(domain, id).remove();
             }
 
         };
