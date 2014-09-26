@@ -1,31 +1,67 @@
 module.exports = function(grunt) {
+  
+  require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-contrib-clean');
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('bower.json'),
 
-    concat: {
-      options: {
-        separator: ';'
-      },
-      dist: {
-        src: ['public/**/*.js', '!public/bower_components/**'],
-        dest: 'dist/<%= pkg.name %>.js'
+    clean: [ 'dist', '.tmp'],
+
+    copy: {
+      build: {
+        files: [
+          {
+            expand: true,
+            cwd: 'public/',
+            src: [ '**' ],
+            dest: 'dist'
+          }          
+        ]
       }
     },
 
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-      },
-      dist: {
-        files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+    processhtml: {
+        dist: {
+          files: {
+            'dist/index.html': ['dist/index.html']
+          }
         }
+    },
+
+    concat: {
+      generated: {
+        files: [
+          {
+            dest: '.tmp/concat/js/app.js',
+            src: ['public/**/*.js', '!public/bower_components/**']
+          }
+        ]
       }
     },
+    
+    uglify: {
+      generated: {
+        files: [
+          {
+            dest: 'dist/js/app.js',
+            src: [ '.tmp/concat/js/app.js' ]
+          }
+        ]
+      }
+    }    
+
   });
   
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.registerTask('pre', [
+    'clean',
+    'copy',
+    'processhtml'    
+  ]);
 
-  grunt.registerTask('build', ['concat', 'uglify']);
+  grunt.registerTask('build', [
+    'pre',
+    'concat:generated',
+    'uglify:generated',
+  ]);
 };
