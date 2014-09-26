@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('bower.json'),
 
-    clean: [ 'dist', '.tmp'],
+    clean: [ 'dist' ],
 
     copy: {
       build: {
@@ -14,7 +14,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'public/',
-            src: [ '**' ],
+            src: [ '**', '!**/**/*.js' ],
             dest: 'dist'
           }          
         ]
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       generated: {
         files: [
           {
-            dest: '.tmp/concat/js/app.js',
+            dest: 'dist/js/app.js',
             src: ['public/**/*.js', '!public/bower_components/**']
           }
         ]
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         files: [
           {
             dest: 'dist/js/app.js',
-            src: [ '.tmp/concat/js/app.js' ]
+            src: [ 'dist/js/app.js' ]
           }
         ]
       }
@@ -53,15 +53,11 @@ module.exports = function(grunt) {
 
   });
   
-  grunt.registerTask('pre', [
+  grunt.registerTask('build', [
     'clean',
     'copy',
-    'processhtml'    
-  ]);
-
-  grunt.registerTask('build', [
-    'pre',
+    'processhtml',   
     'concat:generated',
-    'uglify:generated',
+    'uglify:generated'
   ]);
 };
