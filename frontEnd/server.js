@@ -13,9 +13,9 @@ exports.start = function(config) {
     app.use(morgan('dev'));
 
     //Static content
-    app.use(express.static(__dirname + '/public'));
+    app.use(express.static(__dirname + config.appFolder));
     var index = function(req, res) {
-        res.sendFile(__dirname + "/public/index.html");
+        res.sendFile(__dirname + config.appFolder + "/index.html");
     };
 
     // Routes

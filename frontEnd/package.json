@@ -26,8 +26,13 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "start": "node daemon.js start",
+
+    "start": "node daemon.js start",    
     "stop": "node daemon.js stop",
-    "status": "node daemon.js status"
+    "status": "node daemon.js status",
+
+    "start-prod": "node daemonProd.js start",
+    "stop-prod": "node daemonProd.js stop",    
+    "status-prod": "node daemonProd.js status"
   }
 }
