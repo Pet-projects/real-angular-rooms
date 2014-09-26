@@ -8,8 +8,8 @@ module.exports.ensureCreated = function() {
     bucket.ensureCreated();
 };
 
-module.exports.purge = function() {
-    bucket.purge();
+module.exports.flush = function() {
+    bucket.flush();
 };
 
 module.exports.delete = function() {

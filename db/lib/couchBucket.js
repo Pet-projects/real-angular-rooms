@@ -76,7 +76,7 @@ CouchBucket.prototype.update = function() {
     _request();
 };
 
-CouchBucket.prototype.purge = function() {
+CouchBucket.prototype.flush = function() {
     var _request = createRequest(actionFlush(this.config));
     _request();
 };

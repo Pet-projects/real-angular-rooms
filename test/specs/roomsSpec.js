@@ -8,7 +8,7 @@ describe('As a owner', function() {
   describe("when I go to the list of rooms", function() {
 
     beforeEach(function() {
-        database.purge();
+        database.flush();
         roomsPage.resetData();
         roomsPage.navigate();
     });
