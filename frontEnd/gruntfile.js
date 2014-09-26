@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('bower.json'),
 
-    clean: [ 'dist' ],
+    clean: [ 'prod' ],
 
     copy: {
       build: {
@@ -14,8 +14,8 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'public/',
-            src: [ '**', '!**/**/*.js', '!public/bower_components/**' ],
-            dest: 'dist'
+            src: [ '**', '!**/**/*.js', '!**/bower_components/**' ],
+            dest: 'prod'
           }          
         ]
       }
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     processhtml: {
         dist: {
           files: {
-            'dist/index.html': ['dist/index.html']
+            'prod/index.html': ['prod/index.html']
           }
         }
     },
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       generated: {
         files: [
           {
-            dest: 'dist/js/app.js',
+            dest: 'prod/js/app.js',
             src: ['public/**/*.js', '!public/bower_components/**']
           }
         ]
@@ -44,8 +44,8 @@ module.exports = function(grunt) {
       generated: {
         files: [
           {
-            dest: 'dist/js/app.js',
-            src: [ 'dist/js/app.js' ]
+            dest: 'prod/js/app.js',
+            src: [ 'prod/js/app.js' ]
           }
         ]
       }
