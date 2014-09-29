@@ -164,6 +164,36 @@ The $location object, as you can see is responsible for navigating between the A
 
 #### services
 
+The concept of services can be implemented in <a href="http://stackoverflow.com/questions/15666048/service-vs-provider-vs-factory">three different ways</a> in AngularJS (services, providers and factories).
+Services are singletons and normally contain operations that can be used by different controllers.
+They are normally used for fetching data from the server.
+
+In this example we have a implementation of a factory (it is the option that is normally used):
+
+```js
+angular.module('lateRooms.domain.room')
+    
+    .factory('RoomService', ['Restangular', function (restangular) {
+       
+       var domain = 'rooms';
+
+       return {
+
+            list: function() {
+                return restangular.all(domain).getList();               
+            },
+
+            remove: function (id) {
+                return restangular.one(domain, id).remove();
+            }
+
+        };
+    }]);
+```
+
+We are using the <a href="https://github.com/mgonto/restangular">Restangular</a> library to fetch the data from the server.
+It is a widely used library for this scenario and make your REST calls much simpler and powerful.
+
 #### views
 
 #### directives
