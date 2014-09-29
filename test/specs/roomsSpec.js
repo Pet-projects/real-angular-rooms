@@ -13,10 +13,6 @@ var rooms = [
     { id: 4, name: "B&B ", address: "Westminster" },
     { id: 5, name: "Premium", address: "Piccadilly" }];
 
-db.storeRoom(rooms[0], function(err, result) {
-    console.log(result);
-});
-
 describe('As a owner', function() {
   
   describe("when I go to the list of rooms", function() {
@@ -27,9 +23,6 @@ describe('As a owner', function() {
         dbAdmin.flush(function() {
             db.storeRooms(rooms, function(err, result) {
                 console.log('Performed seeding');
-//                db.shutdown();
-
-                roomsPage.resetData();
                 roomsPage.navigate();
                 done = true;
             });
@@ -40,9 +33,9 @@ describe('As a owner', function() {
         }, couchTimeout);
     });
 
-    it('I should see 5 rooms', function() {
+    it('I should see the rooms', function() {
       	var roomList = roomsPage.getListOfRooms();
-      	expect(roomList.count()).toBe(5);
+      	expect(roomList.count()).toBe(rooms.length);
 
     });
 
@@ -51,7 +44,7 @@ describe('As a owner', function() {
       	roomsPage.deleteRoomAtRow(0);
 
       	var roomList = roomsPage.getListOfRooms();
-      	expect(roomList.count()).toBe(4);
+      	expect(roomList.count()).toBe(rooms.length - 1);
     });
 
     it('I should be able to go to edit room feature', function() {

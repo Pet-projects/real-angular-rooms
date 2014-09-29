@@ -4,10 +4,6 @@ var config = require('../config');
 roomsPage = function () { 
  	var me = this;
 
- 	this.resetData = function(callback) {
-       	request(config.backend.address + 'rooms/resetData');
-    };
-
     this.navigate = function() {
         browser.get('/rooms');
     };

@@ -9,9 +9,13 @@
     ],
     "dependencies": {
         "start-stop-daemon": "0.1.0",
-        "restify": "2.8.2"
+        "restify": "2.8.2",
+        "couchbase": "2.0.0-dp1",
+        "rooms-db-query": "x"
     },
     "scripts": {
+        "preinstall": "npm install ../db/query",
+
         "start" : "node daemon.js start",
         "stop" : "node daemon.js stop",
         "status": "node daemon.js status"

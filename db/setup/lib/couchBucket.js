@@ -5,20 +5,22 @@ var request = require('request-promise');
 function AbstractCouchAction(config) {
     this.auth = { 'user': config.adminUser, 'pass': config.adminPassword };
     this.method = 'GET';
-    this.baseuri = 'http://' + config.host + '/pools/default/buckets';
+    this.bucketBase = 'http://' + config.host + ':' + config.adminPort + '/pools/default/buckets';
+    this.designBase = 'http://' + config.host + ':' + config.designPort;
+    this.body = '';
 }
 
 function actionRetrieve(config) {
     var action = new AbstractCouchAction(config);
     action.method = 'GET';
-    action.uri = action.baseuri + '/' + config.bucket;
+    action.uri = action.bucketBase + '/' + config.bucket;
     return action;
 }
 
 function actionDelete(config) {
     var action = new AbstractCouchAction(config);
     action.method = 'DELETE';
-    action.uri = action.baseuri + '/' + config.bucket;
+    action.uri = action.bucketBase + '/' + config.bucket;
     return action;
 }
 
@@ -33,13 +35,25 @@ function actionCreate(config) {
         replicaNumber: 0,
         flushEnabled: 1
     };
-    action.uri = action.baseuri;
+    action.uri = action.bucketBase;
     return action;
 }
 
 function actionUpdate(config) {
     var action = actionCreate(config);
-    action.uri = action.baseuri + '/' + config.bucket;
+    action.uri = action.bucketBase + '/' + config.bucket;
+    return action;
+}
+
+function actionDesignDocument(config) {
+    var designDoc = config.designDocument;
+    var action = new AbstractCouchAction(config);
+    action.method = 'PUT';
+    action.uri = action.designBase + '/' + config.bucket + '/_design/' + designDoc.name;
+    action.headers = {
+        'Content-Type': 'application/json'
+    };
+    action.body = designDoc.content;
     return action;
 }
 
@@ -47,7 +61,7 @@ function actionFlush(config) {
     var action = new AbstractCouchAction(config);
     action.method = 'POST';
     action.form = { };
-    action.uri = action.baseuri + '/' + config.bucket + '/controller/doFlush';
+    action.uri = action.bucketBase + '/' + config.bucket + '/controller/doFlush';
     return action;
 }
 
@@ -58,51 +72,64 @@ function CouchBucket(config) {
 }
 
 CouchBucket.prototype.ensureCreated = function(callback) {
-    var _action = actionRetrieve(this.config);
+    var parentThis = this;
 
-    console.log('Making request: ' + _action.method + ' ' + _action.uri);
-    request(_action)
-        .then(createRequest(actionUpdate(this.config), callback))
-        .catch(createRequest(actionCreate(this.config), callback));
+    var thenConfigureDDoc = function() {
+        parentThis.configureDesignDocument(callback);
+    }
+
+    this.retrieve(
+        function updateExisting() {
+            parentThis.update(thenConfigureDDoc);
+        },
+        function createNew() {
+            parentThis.create(thenConfigureDDoc);
+        }
+    );
+
+
 };
 
-CouchBucket.prototype.create = function(callback) {
-    var _request = createRequest(actionCreate(this.config), callback);
-    _request();
+CouchBucket.prototype.retrieve = function(callback, errorCallback) {
+    performAction(actionRetrieve(this.config), callback, errorCallback );
 };
 
-CouchBucket.prototype.update = function(callback) {
-    var _request = createRequest(actionUpdate(this.config), callback);
-    _request();
+CouchBucket.prototype.create = function(callback, errorCallback) {
+    performAction(actionCreate(this.config), callback, errorCallback );
 };
 
-CouchBucket.prototype.flush = function(callback) {
-    var _request = createRequest(actionFlush(this.config), callback);
-    _request();
+CouchBucket.prototype.update = function(callback, errorCallback) {
+    performAction(actionUpdate(this.config), callback, errorCallback );
 };
 
-CouchBucket.prototype.delete = function(callback) {
-    var _request = createRequest(actionDelete(this.config), callback);
-    _request();
+CouchBucket.prototype.configureDesignDocument = function(callback, errorCallback) {
+    performAction(actionDesignDocument(this.config), callback, errorCallback );
+};
+
+CouchBucket.prototype.flush = function(callback, errorCallback) {
+    performAction(actionFlush(this.config), callback, errorCallback );
+};
+
+CouchBucket.prototype.delete = function(callback, errorCallback) {
+    performAction(actionDelete(this.config), callback, errorCallback );
 };
 
 //Private use
 
-function createRequest(action, callback) {
-    var _action = action;
-
-    return function() {
-        console.log('Making request: ' + _action.method + ' ' + _action.uri);
-        request(_action)
-            .then(callback)
-            .catch(handleError);
-    }
+function performAction(action, callback, errorCallback) {
+    console.log('X Making request: ' + action.method + ' ' + action.uri);
+    errorCallback = typeof errorCallback !== 'undefined' ? errorCallback : handleError;
+    request(action)
+        .then(callback)
+        .catch(errorCallback);
 }
 
 function handleError(error) {
     console.log("Error. Status code is: " + error.statusCode);
     console.log(error.options.method + ' ' + error.options.uri);
-    console.log(error.response.body);
+    if (error.response != null) {
+        console.log(error.response.body);
+    }
 };
 
 // Export

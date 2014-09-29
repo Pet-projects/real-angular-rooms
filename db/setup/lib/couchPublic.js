@@ -15,9 +15,3 @@ module.exports.flush = function(callback) {
 module.exports.delete = function(callback) {
     bucket.delete(callback);
 };
-
-module.exports.connectionConfig = {
-    host: [config.host],
-    bucket: config.bucket,
-    password: config.password
-};
