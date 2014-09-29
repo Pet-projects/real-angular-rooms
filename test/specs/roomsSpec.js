@@ -4,6 +4,7 @@ var roomsPage = require('../pageObjects/roomsPage');
 var dbAdmin = require('rooms-db-setup');
 var db = require('rooms-db-query');
 
+var couchTimeout = 60 * 1000;  // travis needs a long time between buckets
 
 var rooms = [
     { id: 1, name: "Premium", address: "Barbican" },
@@ -36,7 +37,7 @@ describe('As a owner', function() {
 
         waitsFor(function(){
             return done;
-        }, 2000);
+        }, couchTimeout);
     });
 
     it('I should see 5 rooms', function() {
