@@ -144,6 +144,23 @@ chromeOnly: false,
 
 #Building the application
 
+We are using Grunt to package the web client app to production.
+The build command handles the following:
+
+- Copies all the html files to the /webClient/prod folder.
+- Concatenates and minifies all the internal javascript files.
+- Change the Index.html file to:
+	- Use CDNs instead of local references to external javascript and CSS libraries.
+	- Reference one minified javascript file that has all the internal javascript files concatenated.
+
+To do that you just need to run the following command in the /webClient folder:
+
+```shell
+grunt build
+```
+
+The outcome will be in the /webClient/prod folder.
+
 #Roadmap
 
 You can have a look at the roadmap of this project on <a href="https://trello.com/b/jadAtdpV/laterooms">this trello board</a>.
