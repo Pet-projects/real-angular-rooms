@@ -27,7 +27,10 @@ A sample project that creates an Angular app with a Node.js REST API.
 		- [Why protractor](#why-protractor)
 		- [Specifications](#specifications)
 		- [Page objects](#app-structure)
-	- [Grunt file explanation](#grunt-file-explanation)
+	- [Other tools](#other-tools)
+		- [NPM](#npm)
+		- [Bower](#bower)
+		- [Grunt](#grunt)
 - [Testing strategy](#testing-strategy)
 - [Continuous Integration](#continuous-integration)
 - [Conclusion](#conclusion)
@@ -91,7 +94,7 @@ Followed by:
 npm start
 ```
 
-You should now be able to use a REST tool (try postman) to make a GET to: 
+You should now be able to use a REST tool (try <a href="http://www.getpostman.com/">postman</a>) to make a GET to: 
 
 ```shell
 http://localhost:4000/rooms
@@ -118,7 +121,7 @@ And finally by:
 npm start
 ```
 
-You should now be able to navigate to the web app, just go to http://localhost:3000. 
+You should now be able to navigate to the web app, just go to <a href="http://localhost:3000">http://localhost:3000</a>. 
 
 #Running the tests
 
@@ -404,7 +407,12 @@ The landing page view (public\domain\landingPage) shows how to use that directiv
 ### Why protractor
 ### Specifications
 ### Page objects
-### Grunt file explanation
+
+## Other tools
+
+### NPM
+### Bower
+### Grunt
 
 #Testing strategy
 
