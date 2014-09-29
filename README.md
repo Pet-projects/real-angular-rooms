@@ -94,7 +94,7 @@ Followed by:
 npm start
 ```
 
-You should now be able to use a REST tool (try postman) to make a GET to: 
+You should now be able to use a REST tool (try <a href="http://www.getpostman.com/">postman</a>) to make a GET to: 
 
 ```shell
 http://localhost:4000/rooms
@@ -121,7 +121,7 @@ And finally by:
 npm start
 ```
 
-You should now be able to navigate to the web app, just go to http://localhost:3000. 
+You should now be able to navigate to the web app, just go to <a href="http://localhost:3000">http://localhost:3000</a>. 
 
 #Running the tests
 
