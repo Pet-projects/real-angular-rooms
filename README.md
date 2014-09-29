@@ -196,6 +196,43 @@ This library is widely used for making REST calls, it is very powerful and will 
 
 #### views
 
+Not a lot of news here. :)
+Theses html pages are going to be inserted inside of the "ng-view" directive of the index.html file.
+Inside of an AngularJS view you can use the "{{ }}" symbols to access data that was included on the $scope through the controller or even inside the view.
+
+Inside of angular directives you don't need to use "{{ }}", have a look at the ng-click or ng-repeat bellow.
+
+```html
+<h2>Rooms available</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="room in rooms">
+      <td>{{ room.id }}</td>
+      <td>{{ room.name }}</td>
+      <td>{{ room.address }}</td>
+      <td>
+        <a ng-click="editRoom(room.id)" href="#">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+        
+        <a ng-click="removeRoom(room.id)" href="#">
+          <i class="glyphicon glyphicon-minus"></i>
+        </a>        
+      </td>      
+    </tr>                 
+  </tbody>
+</table>
+```
+
 #### directives
 
 Go to [Directives example](#directives-example). :)
