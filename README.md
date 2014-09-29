@@ -14,7 +14,7 @@ A sample project that creates an Angular app with a Node.js REST API.
 - [Building the application](#building-the-application)
 - [Roadmap](#roadmap)
 - [Implementation details](#implementation-details)
-	- [webClient](#webClient)
+	- [webClient](#webclient)
 		- [Why AngularJS](#why-angularjs)
 		- [App structure](#app-structure)
 		- [Most important files](#most-important-files)
@@ -61,7 +61,7 @@ Basically we have the following structure inside of the public folder:
 
 ├── app.js
 ├── index.html
-├── assets ( css and imgs )
+├── assets ( CSS and imgs )
 ├── bower_components ( not versioned, but contains javascript libraries )
 ├── common ( directives, exception handling and other common files )
 └── domain
@@ -83,6 +83,32 @@ It is also where you are going to define the routes that your application is goi
 At this file you can also configure other parameter of the app, like the base URL for the server API. 
 
 #### index.html
+
+That is supposed to be the only "full html page" in our application. That is why AngularJS is a SPA (single page application) framework.
+
+This page is supposed to reference the scripts and CSS files that our app needs to run. It can also have some common behaviour. In this example we have the header coded in this file.
+
+This file also need an angular directive called ng-view "<div ng-view></div>". 
+It is inside of that div that all the angular views are going to be rendered.
+Angular knows which view to display based on the routes that you defined in the app.js file.
+
+You can note that in this html file all the references are wrapped in comments, like the following line:
+
+<!-- build:js //ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js -->
+<script src="bower_components/angular/angular.js"></script>
+<!-- /build -->
+
+or:
+
+<!-- build:js js/app.js -->
+<script src="app.js"></script>
+<script src="domain/domain.js"></script>
+<script src="domain/landingPage/landingPageController.js"></script>
+<!-- /build -->
+
+Those commentaries will be used by grunt to refactor the index.html for deployment purposes.
+It will change the references to external libraries to use the equivalent CDNs.
+It also will concatenate and minify the scripts used in our app.
 
 #### controllers
 
