@@ -74,7 +74,40 @@ Basically we have the following structure inside of the public folder:
 In the route folder we have files that are responsible for serving the public folder and for building the web client application.
 
 ### Most important files
+
+#### app.js
+
+This file is responsible for setting up the root module for the application.
+It is also where you are going to define the routes that your application is going to have.
+
+At this file you can also configure other parameter of the app, like the base URL for the server API. 
+
+#### index.html
+
+#### controllers
+
+#### views
+
+#### directives
+
+Go to [Directives example](#directives-example). :)
+
 ### Directives example
+
+Directives are one of the best ways to reuse UI behaviours in AngularJS.
+You can read more about directives <a href="http://weblogs.asp.net/dwahlin/creating-custom-angularjs-directives-part-i-the-fundamentals">here</a>.
+
+In this app we implemented two very similar directives as examples. 
+In the folder "public\domain\landingPage\directives" you can find both.
+
+Normally you will have two files for the directives, the first one will define its behaviour.
+The second one is optional and it is the html template.
+It is optional because sometimes you will make directives that doesn't need a template.
+Maybe you just want to format some numbers in a texbox or change the way dates are displayed.
+
+Coming back to our example, the featureLink.js file is defining some parameters, the template URL and a link function.
+The featureLink.html uses those parameters and the link function.
+The landing page view (public\domain\landingPage) shows how to use that directive.
 
 ## api
 
