@@ -9,7 +9,7 @@ A sample project that creates an Angular app with a Node.js REST API.
 
 - [Introduction](#introduction)
 - [Dependencies](#dependencies)
-- [How to start/test/build the project](#how-to-start-the-project)
+- [How to start the project](#how-to-start-the-project)
 - [Running the tests](#running-the-tests)
 - [Building the application](#building-the-application)
 - [Roadmap](#roadmap)
@@ -76,7 +76,7 @@ We are using a lot of amazing technologies, but don't worry, all of them will be
 
 Make sure you have the necessary <a href="https://github.com/julianghionoiu/real-angular-rooms#dependencies">dependencies installed</a> and download the project.
 
-#### Install dependencies and run the API project:
+#### Install node packages and run the API project:
 
 Open a command line tool and navigate to the API project root (/api).
 Now run the following commands:
@@ -97,9 +97,9 @@ You should now be able to use a REST tool (try postman) to make a GET to:
 http://localhost:4000/rooms
 ```
 
-#### Install dependencies and run the web client project:
+#### Install node and bower packages and run the web client project:
 
-Open a command line tool and navigate to the API project root (/webClient).
+Open a command line tool and navigate to the web client project root (/webClient).
 Now run the following commands:
 
 ```shell
@@ -123,13 +123,13 @@ You should now be able to navigate to the web app, just go to http://localhost:3
 #Running the tests
 
 With both API and webClient running go to the e2e folder (/e2e).
-Now run the following commands:
+Now run the following command:
 
 ```shell
 npm test
 ```
 
-PS: If you are using windows you'll have to edit the protractor configuration (/test/protractorConfiguration) to stop using phantom instead of Chrome for testing. It is very simple, just exclude the following lines:
+<b>PS:</b> If you are using <b>Windows</b> you'll have to edit the protractor configuration (/test/protractorConfiguration) to stop using phantom. The dafault is Chrome so you just need exclude the following lines:
 
 ```js
 seleniumAddress: 'http://localhost:9000',
