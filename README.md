@@ -33,6 +33,20 @@ A sample project that creates an Angular app with a Node.js REST API.
 
 #Dependencies
 
+To run this project you will need to have the following technologies installed in your computer:
+
+- <a href="http://nodejs.org/">node.js</a> 
+- <a href="http://www.couchbase.com/download?gclid=CjwKEAjwhqShBRDS95LciqqaonISJADj1rgao_MufRblcLFRxicB4rLM9aVADWi-sTeYJui-CaKQphoCZWLw_wcB">CouchBase</a> 
+
+There are some node packages that are dependent to a bunch of other technologies, so you will probably need:
+- <a href="https://www.ruby-lang.org/en/">Ruby</a> 
+- <a href="https://www.python.org/">Python</a> 
+- A c++ compiler (depends on the operational system)
+
+Follow the [How to start the project](#how-to-start-the-project) and install the languages above if needed.
+
+We are using a lot of amazing technologies, but don't worry, all of them will be automatically downloaded using NPM or Bower for you, just follow the [How to start the project](#how-to-start-the-project).
+
 #How to start the project
 
 #Running the tests
@@ -48,7 +62,7 @@ You can have a look at the roadmap of this project on <a href="https://trello.co
 ## webClient
 
 This is where all the web client code is located.
-It is built using AngularJS, Bootstrap, Restangular, Grunt, Bower, NPM, Protractor and so on.
+It is being built using AngularJS, Bootstrap, Restangular, Grunt, Bower, NPM, Protractor and so on.
 
 We called it web client because in the future we will probably have a mobile client as well. 
 
