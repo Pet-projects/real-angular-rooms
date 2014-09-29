@@ -196,10 +196,10 @@ This library is widely used for making REST calls, it is very powerful and will 
 
 #### views
 
-Not a lot of news here. :)
+No News Here. :)
 
-Theses html pages are going to be inserted inside of the "ng-view" directive of the index.html file.
-You just need to have a proper rout at the app.js file.
+These html pages are going to be inserted inside of the "ng-view" directive of the index.html file.
+You just need to have a proper rout at the app.js file like this:
 
 ```js
 $routeProvider.when('/rooms',     	{ 
@@ -208,9 +208,9 @@ $routeProvider.when('/rooms',     	{
 });
 ```
 
-Inside of an AngularJS view you can use the "{{ }}" symbols to access data that was included on the $scope through the controller or even inside the view.
+Inside of an AngularJS view you can use the "{{ }}" symbols to access data that was included in the $scope object through the controller or even inside the view.
 
-Inside of angular directives you don't need to use "{{ }}", have a look at the ng-click or ng-repeat bellow.
+Inside of angular directives you don't need to use "{{ }}", have a look at the ng-click or ng-repeat bellow:
 
 ```html
 <h2>Rooms available</h2>
