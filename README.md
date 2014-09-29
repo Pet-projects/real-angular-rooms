@@ -88,23 +88,31 @@ That is supposed to be the only "full html page" in our application. That is why
 
 This page is supposed to reference the scripts and CSS files that our app needs to run. It can also have some common behaviour. In this example we have the header coded in this file.
 
-This file also need an angular directive called ng-view "<div ng-view></div>". 
+This file also need an angular directive called ng-view:
+```html
+<div ng-view></div> 
+```
+
 It is inside of that div that all the angular views are going to be rendered.
 Angular knows which view to display based on the routes that you defined in the app.js file.
 
 You can note that in this html file all the references are wrapped in comments, like the following line:
 
+```html
 <!-- build:js //ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js -->
 <script src="bower_components/angular/angular.js"></script>
 <!-- /build -->
+```
 
 or:
 
+```html
 <!-- build:js js/app.js -->
 <script src="app.js"></script>
 <script src="domain/domain.js"></script>
 <script src="domain/landingPage/landingPageController.js"></script>
 <!-- /build -->
+```
 
 Those commentaries will be used by grunt to refactor the index.html for deployment purposes.
 It will change the references to external libraries to use the equivalent CDNs.
