@@ -28,8 +28,31 @@ A sample project that creates an Angular app with a Node.js REST API.
 		- [Specifications](#specifications)
 		- [Page objects](#app-structure)
 	- [Grunt file explanation](#grunt-file-explanation)
+- [Conclusion](#conclusion)
 
 #Introduction
+
+This project is a proof of concept that tries to integrate some "sexy" technologies and best practices in testing and continuous integration.
+
+In the web client we are using:
+- <a href="https://angularjs.org/">AngularJS</a>; 
+- <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://sass-lang.com/">SASS</a>;   
+- <a href="https://github.com/mgonto/restangular">Restangular</a>; 
+- <a href="https://www.npmjs.org/">NPM</a> and <a href="http://bower.io/">Bower</a> to controll depencies;    
+- <a href="http://gruntjs.com/">Grunt</a> to build & deploy the app;  
+- <a href="https://github.com/angular/protractor">Protractor</a> for e2e tests;  
+
+In the api we are using:
+- <a href="https://github.com/angular/protractor">node.js</a>; 
+- <a href="http://mcavage.me/node-restify/">restify</a>;  
+- <a href="http://www.couchbase.com/download?gclid=CjwKEAjwhqShBRDS95LciqqaonISJADj1rgal_cnU7C5g9xs9wbIhIFjygvxitCWTHKfbap3CNWzThoCIyLw_wcB">Couchbase</a>  
+- <a href="https://www.npmjs.org/">NPM</a> to controll depencies; 
+- <a href="http://gruntjs.com/">Grunt</a> to build & deploy the API; 
+
+This project is OS agnostic, at least for now :)
+Follow the next steps to run it on your computer.
+
+Feel free to fork it or help us to improve this PoC (here is the [roadmap](#roadmap)).
 
 #Dependencies
 
@@ -298,7 +321,7 @@ The landing page view (public\domain\landingPage) shows how to use that directiv
 ### Page objects
 ### Grunt file explanation
 
-#Finally!!
+#Conslusion
 
 Congratulations for reading everything!
 
