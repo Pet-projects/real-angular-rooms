@@ -197,7 +197,17 @@ This library is widely used for making REST calls, it is very powerful and will 
 #### views
 
 Not a lot of news here. :)
+
 Theses html pages are going to be inserted inside of the "ng-view" directive of the index.html file.
+You just need to have a proper rout at the app.js file.
+
+```js
+$routeProvider.when('/rooms',     	{ 
+	templateUrl: '/domain/room/rooms.html',
+	controller: 'RoomsController' 
+});
+```
+
 Inside of an AngularJS view you can use the "{{ }}" symbols to access data that was included on the $scope through the controller or even inside the view.
 
 Inside of angular directives you don't need to use "{{ }}", have a look at the ng-click or ng-repeat bellow.
