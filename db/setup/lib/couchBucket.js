@@ -57,43 +57,44 @@ function CouchBucket(config) {
     this.config = config;
 }
 
-CouchBucket.prototype.ensureCreated = function() {
+CouchBucket.prototype.ensureCreated = function(callback) {
     var _action = actionRetrieve(this.config);
 
     console.log('Making request: ' + _action.method + ' ' + _action.uri);
     request(_action)
-        .then(createRequest(actionUpdate(this.config)))
-        .catch(createRequest(actionCreate(this.config)));
+        .then(createRequest(actionUpdate(this.config), callback))
+        .catch(createRequest(actionCreate(this.config), callback));
 };
 
-CouchBucket.prototype.create = function() {
-    var _request = createRequest(actionCreate(this.config));
+CouchBucket.prototype.create = function(callback) {
+    var _request = createRequest(actionCreate(this.config), callback);
     _request();
 };
 
-CouchBucket.prototype.update = function() {
-    var _request = createRequest(actionUpdate(this.config));
+CouchBucket.prototype.update = function(callback) {
+    var _request = createRequest(actionUpdate(this.config), callback);
     _request();
 };
 
-CouchBucket.prototype.flush = function() {
-    var _request = createRequest(actionFlush(this.config));
+CouchBucket.prototype.flush = function(callback) {
+    var _request = createRequest(actionFlush(this.config), callback);
     _request();
 };
 
-CouchBucket.prototype.delete = function() {
-    var _request = createRequest(actionDelete(this.config));
+CouchBucket.prototype.delete = function(callback) {
+    var _request = createRequest(actionDelete(this.config), callback);
     _request();
 };
 
 //Private use
 
-function createRequest(action) {
+function createRequest(action, callback) {
     var _action = action;
 
     return function() {
         console.log('Making request: ' + _action.method + ' ' + _action.uri);
         request(_action)
+            .then(callback)
             .catch(handleError);
     }
 }

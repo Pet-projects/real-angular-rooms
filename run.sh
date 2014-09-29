@@ -27,8 +27,8 @@ function inFront {
     inFolder "${SCRIPT_DIR}/frontEnd" "$1"
 }
 
-function inDb {
-    inFolder "${SCRIPT_DIR}/db" "$1"
+function inDbSetup {
+    inFolder "${SCRIPT_DIR}/db/setup" "$1"
 }
 
 function inTest {
@@ -37,14 +37,14 @@ function inTest {
 
 
 function performInstall {
-    inDb "npm install"
+    inDbSetup "npm install"
     inBack "npm install"
     inFront "npm install"
     inTest "npm install"
 }
 
 function performDbSetup {
-    inDb "npm run db-setup"
+    inDbSetup "npm run db-setup"
 }
 
 function performStart {

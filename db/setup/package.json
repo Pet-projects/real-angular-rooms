@@ -1,15 +1,14 @@
 {
-    "name": "rooms-database",
+    "name": "rooms-db-setup",
     "version": "0.0.1",
-    "description": "Database modules",
+    "description": "Database module that is responsible for setting up and tearing down the database",
     "author": "Matt Davies",
     "contributors": [
         "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
         "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
     ],
     "dependencies": {
-        "request-promise": "0.2.0",
-        "couchbase": "2.0.0-dp1"
+        "request-promise": "0.2.0"
     },
     "main": "./lib/couchPublic.js",
     "scripts": {

@@ -1,0 +1,15 @@
+{
+    "name": "rooms-db-query",
+    "version": "0.0.1",
+    "description": "Database module that is responsible for interacting with the database",
+    "author": "Matt Davies",
+    "contributors": [
+        "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
+        "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
+    ],
+    "dependencies": {
+        "couchbase": "2.0.0-dp1",
+        "underscore": "1.7.0"
+    },
+    "main": "./lib/public.js"
+}
