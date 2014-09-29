@@ -33,12 +33,12 @@ A sample project that creates an Angular app with a Node.js REST API.
 
 #Dependencies
 
-To run this project you will need to have the following technologies installed in your computer:
+To run this project you will need the following technologies installed in your computer:
 
 - <a href="http://nodejs.org/">node.js</a> 
 - <a href="http://www.couchbase.com/download?gclid=CjwKEAjwhqShBRDS95LciqqaonISJADj1rgao_MufRblcLFRxicB4rLM9aVADWi-sTeYJui-CaKQphoCZWLw_wcB">CouchBase</a> 
 
-There are some node packages that are dependent to a bunch of other technologies, so you will probably need:
+There are some node packages that are dependent on a bunch of other technologies, so you will probably need:
 - <a href="https://www.ruby-lang.org/en/">Ruby</a> 
 - <a href="https://www.python.org/">Python</a> 
 - A c++ compiler (depends on the operational system)
@@ -297,3 +297,9 @@ The landing page view (public\domain\landingPage) shows how to use that directiv
 ### Specifications
 ### Page objects
 ### Grunt file explanation
+
+#Finally!!
+
+Congratulations for reading everything!
+
+![alt tag](http://weknowmemes.com/generator/uploads/generated/g1365089101540651822.jpg)
