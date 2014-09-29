@@ -27,7 +27,10 @@ A sample project that creates an Angular app with a Node.js REST API.
 		- [Why protractor](#why-protractor)
 		- [Specifications](#specifications)
 		- [Page objects](#app-structure)
-	- [Grunt file explanation](#grunt-file-explanation)
+	- [Other tools](#other-tools)
+		- [NPM](#npm)
+		- [Bower](#bower)
+		- [Grunt](#grunt)
 - [Testing strategy](#testing-strategy)
 - [Continuous Integration](#continuous-integration)
 - [Conclusion](#conclusion)
@@ -404,7 +407,12 @@ The landing page view (public\domain\landingPage) shows how to use that directiv
 ### Why protractor
 ### Specifications
 ### Page objects
-### Grunt file explanation
+
+## Other tools
+
+### NPM
+### Bower
+### Grunt
 
 #Testing strategy
 
