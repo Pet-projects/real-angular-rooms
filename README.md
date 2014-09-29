@@ -51,7 +51,29 @@ If you are not familiar with AngularJS you can learn a little bit more on <a hre
 In short, <a href="https://angularjs.org/">AngularJS</a> is a comprehensive framework to build Single Application apps.
 It is, at the same time, very extensible and powerful.
 
-### App structure
+### App structure 
+
+The file structure is following the <a href="https://blog.angularjs.org/2014/02/an-angularjs-style-guide-and-best.html">"AngularJS Style Guide and Best Practice for App Structure"</a>.
+
+Basically we have the following structure inside of the public folder:
+
+```shell
+
+├── app.js
+├── index.html
+├── assets ( css and imgs )
+├── bower_components ( not versioned, but contains 
+|					   javascript libraries )
+├── common ( directives, exception handling, 
+|			 and other common files )
+└── domain
+    ├── room
+    ├── supplement
+    └── ...
+        └── ( views, controllers, directives
+        	  and other domains specific files )		 
+
+In the route folder we have files that are responsible for serving the public folder and for building the web client application.
 
 ### Most important files
 ### Directives example
