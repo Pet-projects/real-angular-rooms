@@ -114,11 +114,55 @@ or:
 <!-- /build -->
 ```
 
-Those commentaries will be used by grunt to refactor the index.html for deployment purposes.
+Those commentaries will be used by [grunt](#grunt-file-explanation) to refactor the index.html for deployment purposes.
 It will change the references to external libraries to use the equivalent CDNs.
 It also will concatenate and minify the scripts used in our app.
 
 #### controllers
+
+Controllers is where you code the bahivours for your views.
+In the definiotion of the controller you will inform its dependecies, you could have for example a reference to a service that is responsible to fetch data from the server.
+
+Here is an example of a controllers that does just that:
+
+```js
+angular.module('lateRooms.domain.room')
+	
+	.controller('RoomsController', 
+		['$scope', '$location', 'RoomService', 
+		function($scope, $location, roomService) {
+
+	    $scope.populateRoomsTable = function(id) {
+			roomService.list().then(function(data) {
+		        $scope.rooms = data;
+		    });
+		};
+
+		$scope.removeRoom = function(id) {
+			roomService.remove(id).then(function() {
+		        $scope.populateRoomsTable();
+		    });
+		};
+
+		$scope.newRoom = function() {
+			$location.path( "/rooms/new" );
+		};
+
+		$scope.editRoom = function(id) {
+			$location.path( "/rooms/edit/" + id );
+		};
+
+		$scope.populateRoomsTable();
+}]);
+```
+
+This controller is also depending on two AngularJS objects.
+The scope is a "glue" between the controller and the view.
+Everything that you include/edit in the $scope inside of a controller will be available in the binded view and vice versa. This is called <a href="http://www.angularjshub.com/examples/basics/twowaydatabinding/">two way binding</a> and it is one of the most important features of AngularJS.
+
+The $location object, as you can see is responsible for navigating between the AngularJS routes.
+
+#### services
 
 #### views
 
