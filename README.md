@@ -46,7 +46,13 @@ A sample project that creates an Angular app with a Node.js REST API.
 ## webClient
 
 ### Why AngularJS
+
+If you are not familiar with AngularJS you can learn a little bit more on <a href="https://www.levelupcoder.com/why-and-how-to-start-using-angular/">this post</a>.
+In short, <a href="https://angularjs.org/">AngularJS</a> is a comprehensive framework to build Single Application apps.
+It is, at the same time, very extensible and powerful.
+
 ### App structure
+
 ### Most important files
 ### Directives example
 
