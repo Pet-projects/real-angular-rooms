@@ -13,10 +13,12 @@
         "phantomjs": "^1.9.7",
         "request": "2.44.0",
         "request-promise": "0.2.0",
-        "rooms-database": "x"
+        "couchbase": "2.0.0-dp1",
+        "rooms-db-setup": "x",
+        "rooms-db-query": "x"
     },
     "scripts": {
-        "preinstall": "npm install ../db",
+        "preinstall": "npm install ../db/setup && npm install ../db/query",
 
         "pretest": "npm install && forever start node_modules/.bin/phantomjs --webdriver=localhost:9000",
         "test" : "npm run protractor",

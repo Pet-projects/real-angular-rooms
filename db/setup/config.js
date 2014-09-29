@@ -4,7 +4,7 @@ var config = privateSetup;
 
 config.adminUser = 'Administrator';
 //config.adminPassword = ''; - provided through private config
-config.url = 'localhost:8091';
+config.host = 'localhost:8091';
 config.bucket = 'roomsbucket';
 config.password = 'breakfast';
 

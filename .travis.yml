@@ -27,7 +27,7 @@ before_install:
   # - /opt/couchbase/bin/couchbase-cli bucket-create -c 127.0.0.1:8091 --bucket=test --bucket-password=password --bucket-type=couchbase --bucket-port=11211 --bucket-ramsize=100 --bucket-replica=0 -u Administrator -p password
 
   # Initialize buckets
-  - cp .travis.private-config.js ./db/private-config.js
+  - cp .travis.private-config.js ./db/setup/private-config.js
 
 install:
   - ./run.sh install

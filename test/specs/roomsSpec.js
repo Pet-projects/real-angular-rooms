@@ -1,20 +1,46 @@
 'use strict';
 
 var roomsPage = require('../pageObjects/roomsPage');
-var database = require('rooms-database');
+var dbAdmin = require('rooms-db-setup');
+var db = require('rooms-db-query');
+
+var couchTimeout = 60 * 1000;  // travis needs a long time between buckets
+
+var rooms = [
+    { id: 1, name: "Premium", address: "Barbican" },
+    { id: 2, name: "Hostel", address: "Camden" },
+    { id: 3, name: "Hostel", address: "Ealing" },
+    { id: 4, name: "B&B ", address: "Westminster" },
+    { id: 5, name: "Premium", address: "Piccadilly" }];
+
+db.storeRoom(rooms[0], function(err, result) {
+    console.log(result);
+});
 
 describe('As a owner', function() {
   
   describe("when I go to the list of rooms", function() {
 
     beforeEach(function() {
-        database.purge();
-        roomsPage.resetData();
-        roomsPage.navigate();
+        var done = false;
+
+        dbAdmin.flush(function() {
+            db.storeRooms(rooms, function(err, result) {
+                console.log('Performed seeding');
+//                db.shutdown();
+
+                roomsPage.resetData();
+                roomsPage.navigate();
+                done = true;
+            });
+        });
+
+        waitsFor(function(){
+            return done;
+        }, couchTimeout);
     });
 
     it('I should see 5 rooms', function() {
-      
       	var roomList = roomsPage.getListOfRooms();
       	expect(roomList.count()).toBe(5);
 
