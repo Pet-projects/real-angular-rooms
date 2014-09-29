@@ -52,3 +52,7 @@ module.exports.getRooms = function(callbackWithRooms) {
 module.exports.deleteRoom = function(id, callback) {
     db.remove(id, callback);
 };
+
+module.exports.shutdown = function() {
+    db.shutdown();
+};
