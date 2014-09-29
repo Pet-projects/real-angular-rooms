@@ -62,16 +62,14 @@ Basically we have the following structure inside of the public folder:
 ├── app.js
 ├── index.html
 ├── assets ( css and imgs )
-├── bower_components ( not versioned, but contains 
-|					   javascript libraries )
-├── common ( directives, exception handling, 
-|			 and other common files )
+├── bower_components ( not versioned, but contains javascript libraries )
+├── common ( directives, exception handling and other common files )
 └── domain
     ├── room
     ├── supplement
     └── ...
-        └── ( views, controllers, directives
-        	  and other domains specific files )		 
+        └── ( views, controllers, directives and other domains specific files )		 
+```
 
 In the route folder we have files that are responsible for serving the public folder and for building the web client application.
 
