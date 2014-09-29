@@ -9,7 +9,7 @@ A sample project that creates an Angular app with a Node.js REST API.
 
 - [Introduction](#introduction)
 - [Dependencies](#dependencies)
-- [How to start the project](#how-to-start-the-project)
+- [How to start/test/build the project](#how-to-start-the-project)
 - [Running the tests](#running-the-tests)
 - [Building the application](#building-the-application)
 - [Roadmap](#roadmap)
@@ -28,11 +28,13 @@ A sample project that creates an Angular app with a Node.js REST API.
 		- [Specifications](#specifications)
 		- [Page objects](#app-structure)
 	- [Grunt file explanation](#grunt-file-explanation)
+- [Testing strategy](#testing-strategy)
+- [Continuous Integration](#continuous-integration)
 - [Conclusion](#conclusion)
 
 #Introduction
 
-This project is a proof of concept that tries to integrate some "sexy" technologies and best practices in testing and continuous integration.
+This project is a proof of concept that tries to integrate some "sexy" technologies and some best practices in testing and continuous integration.
 
 In the web client we are using:
 - <a href="https://angularjs.org/">AngularJS</a>; 
@@ -72,7 +74,73 @@ We are using a lot of amazing technologies, but don't worry, all of them will be
 
 #How to start the project
 
+Make sure you have the necessary <a href="https://github.com/julianghionoiu/real-angular-rooms#dependencies">dependencies installed</a> and download the project.
+
+#### Install dependencies and run the API project:
+
+Open a command line tool and navigate to the API project root (/api).
+Now run the following commands:
+
+```shell
+npm install
+```
+
+Followed by:
+
+```shell
+npm start
+```
+
+You should now be able to use a REST tool (try postman) to make a GET to: 
+
+```shell
+http://localhost:4000/rooms
+```
+
+#### Install dependencies and run the web client project:
+
+Open a command line tool and navigate to the API project root (/webClient).
+Now run the following commands:
+
+```shell
+npm install
+```
+
+Followed by:
+
+```shell
+bower install
+```
+
+And finally by:
+
+```shell
+npm start
+```
+
+You should now be able to navigate to the web app, just go to http://localhost:3000. 
+
 #Running the tests
+
+With both API and webClient running go to the e2e folder (/e2e).
+Now run the following commands:
+
+```shell
+npm test
+```
+
+PS: If you are using windows you'll have to edit the protractor configuration (/test/protractorConfiguration) to stop using phantom instead of Chrome for testing. It is very simple, just exclude the following lines:
+
+```js
+seleniumAddress: 'http://localhost:9000',
+
+capabilities: {
+    'browserName': 'phantomjs',
+    'phantomjs.binary.path':'./node_modules/phantomjs/bin/phantomjs'
+},
+
+chromeOnly: false,
+```
 
 #Building the application
 
@@ -320,6 +388,10 @@ The landing page view (public\domain\landingPage) shows how to use that directiv
 ### Specifications
 ### Page objects
 ### Grunt file explanation
+
+#Testing strategy
+
+#Continuous Integration
 
 #Conslusion
 
