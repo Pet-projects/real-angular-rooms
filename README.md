@@ -41,9 +41,16 @@ A sample project that creates an Angular app with a Node.js REST API.
 
 #Roadmap
 
+You can have a look at the roadmap of this project on <a href="https://trello.com/b/jadAtdpV/laterooms">this trello board</a>.
+
 #Implementation details
 
 ## webClient
+
+This is where all the web client code is located.
+It is built using AngularJS, Bootstrap, Restangular, Grunt, Bower, NPM, Protractor and so on.
+
+We called it web client because in the future we will probably have a mobile client as well. 
 
 ### Why AngularJS
 
