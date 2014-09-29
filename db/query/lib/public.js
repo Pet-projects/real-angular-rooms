@@ -18,34 +18,37 @@ module.exports.storeRooms = function(rooms, callback) {
         docs[getKey(room)] = { value: room } ;
     });
 
-    module.exports.rooms = [
-        { id: 1, name: "Premium", address: "Barbican" },
-        { id: 2, name: "Hostel", address: "Camden" },
-        { id: 3, name: "Hostel", address: "Ealing" },
-        { id: 4, name: "B&B ", address: "Westminster" },
-        { id: 5, name: "Premium", address: "Piccadilly" }];
-
     db.setMulti(docs, {}, callback);
 };
 
 
 module.exports.getRooms = function(callbackWithRooms) {
-    var rooms = module.exports.rooms;
-    callbackWithRooms(rooms);
+    var q = {
+        limit: 10, // configure max number of entries.
+        stale: false // We don't want stale views here.
+    };
+    db.view("ddoc", "all", q).query(function(err, values) {
+        // 'by_name' view's map function emits beer-name as key and value as
+        // null. So values will be a list of
+        //      [ {id: <beer-id>, key: <beer-name>, value: <null>}, ... ]
+
+        // we will fetch all the beer documents based on its id.
+        var keys = _.pluck(values, 'id');
+
+        db.getMulti(keys, null, function(err, results) {
+
+            // Add the id to the document before sending to template
+            var rooms = _.map(results, function(v, k) {
+                v.value.id = k;
+                return v.value;
+            });
+
+            callbackWithRooms(rooms);
+        });
+    });
 };
 
 
 module.exports.deleteRoom = function(id, callback) {
-    var rooms = module.exports.rooms;
-    for (var i = 0; i < rooms.length; i++) {
-        if (rooms[i].id && rooms[i].id === id) {
-            rooms.splice(i, 1);
-            break;
-        }
-    }
-    callback();
-}
-
-module.exports.shutdown = function() {
-    db.shutdown();
+    db.remove(id, callback);
 };

@@ -16,6 +16,7 @@
     "scripts": {
         "preinstall": "npm install ../db/query",
 
+        "prestart": "npm install",
         "start" : "node daemon.js start",
         "stop" : "node daemon.js stop",
         "status": "node daemon.js status"
