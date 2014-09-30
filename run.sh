@@ -20,15 +20,19 @@ function inFolder {
 }
 
 function inBack {
-    inFolder "${SCRIPT_DIR}/backEnd" "$1"
+    inFolder "${SCRIPT_DIR}/api" "$1"
 }
 
 function inFront {
-    inFolder "${SCRIPT_DIR}/frontEnd" "$1"
+    inFolder "${SCRIPT_DIR}/webClient" "$1"
 }
 
 function inDbSetup {
     inFolder "${SCRIPT_DIR}/db/setup" "$1"
+}
+
+function inDbQuery {
+    inFolder "${SCRIPT_DIR}/db/query" "$1"
 }
 
 function inTest {
@@ -38,6 +42,7 @@ function inTest {
 
 function performInstall {
     inDbSetup "npm install"
+    inDbQuery "npm install"
     inBack "npm install"
     inFront "npm install"
     inTest "npm install"

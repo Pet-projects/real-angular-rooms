@@ -77,7 +77,23 @@ We are using a lot of amazing technologies, but don't worry, all of them will be
 
 #How to start the project
 
-Make sure you have the necessary <a href="https://github.com/julianghionoiu/real-angular-rooms#dependencies">dependencies installed</a> and download the project.
+Make sure you have the necessary <a href="https://github.com/julianghionoiu/real-angular-rooms#dependencies">dependencies installed</a> and cloned the project.
+
+## On Linux/OSX:
+
+In the root folder of the project run:
+
+```shell
+./run.sh install
+```
+
+then start the services (webClient and API):
+
+```shell
+./run.sh start
+```
+
+## On Windows:
 
 #### Install node packages and run the API project:
 
@@ -125,10 +141,18 @@ You should now be able to navigate to the web app, just go to <a href="http://lo
 
 #Running the tests
 
-With both API and webClient running go to the e2e folder (/e2e).
-Now run the following command:
+With both API and webClient running.
+
+On Linux/OSX:
 
 ```shell
+./run.sh test
+```
+
+On Windows:
+
+```shell
+cd ./e2e
 npm test
 ```
 
@@ -396,7 +420,11 @@ Coming back to our example, the featureLink.js file is defining some parameters,
 The featureLink.html uses those parameters and the link function.
 The landing page view (public\domain\landingPage) shows how to use that directive.
 
-## api
+## API
+
+ The component which holds all the business logic
+
+
 
 ### Why node.js and restify
 ### Routes
