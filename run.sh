@@ -36,7 +36,7 @@ function inDbQuery {
 }
 
 function inTest {
-    inFolder "${SCRIPT_DIR}/test" "$1"
+    inFolder "${SCRIPT_DIR}/e2e" "$1"
 }
 
 
