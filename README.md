@@ -422,17 +422,78 @@ The landing page view (public\domain\landingPage) shows how to use that directiv
 
 ## API
 
- The component which holds all the business logic
-
-
+The component which holds all the business logic is called the API. This is a RESTful application exposes resources such as "rooms".
 
 ### Why node.js and restify
+
+The purpose of this small project was to test drive a full web application stack based on Node.js.
+<a href="http://mcavage.me/node-restify/">Restify</a> is a small framework that is aimed at creating REST services.
+From the developer:
+Restify is a framework that gives you absolute control over interactions with HTTP and full observability into the latency and characteristics of your applications.
+
+
 ### Routes
+
+Basicaly, restify is mapping resource urls to functions.
+This is the whole backend:
+
+```js
+module.exports = function(server){
+	server.get('/rooms', function(req, res, next) {
+        db.getRooms(function(rooms) {
+            res.send(200, rooms);
+            return next();
+        });
+    });
+
+    server.del('/rooms/:id', function (req, res, next) {
+        var id = parseInt(req.params.id);
+
+        db.deleteRoom(id, function() {
+            res.send();
+            return next();
+        });
+    });
+
+};
+```
+
+As you can see, the backend performs simple CRUD operations on the database.
+
 ### CouchDB API
+
+The code that interacts with the database can be found in the ./db folder and it is structured in two NPM modules.
+ 
+#### DB-Setup
+
+The database setup module is responsible for programmaticaly creating a Couchbase bucket and the required views.
+This is useful for testing and for deployment.
+
+The module communicates with the Couchbase server using the <a href="http://docs.couchbase.com/couchbase-manual-2.1/">REST API</a>.
+
+
+#### DB-Query
+
+This module is responsible for CRUD operations on the couchbase bucket. 
+It is a wrapper around the <a href="https://www.npmjs.org/package/couchbase">Couchnode library</a> and exposes methods such as:
+
+```js
+db.getRooms(callback)
+db.deleteRoom(id, callback);
+```
 
 ## e2e
 
+The development of the application has been driven by full End-to-End tests. 
+These tests exercise the webClient using a WebDriver based testing framework and control the database using the DB-Setup module.
+
 ### Why protractor
+
+We used <a href="https://github.com/angular/protractor">Protractor</a> as a testing framework because it was tailor specificaly for testing an Angular app.
+The tests are thus easier to read and understand.
+
+In order to run tests fast in a CI server we used Protractor in conjunction with PhantomJs.
+
 ### Specifications
 ### Page objects
 
@@ -445,6 +506,23 @@ The landing page view (public\domain\landingPage) shows how to use that directiv
 #Testing strategy
 
 #Continuous Integration
+
+We used GitHub and Travis for <a href="https://travis-ci.org/julianghionoiu/real-angular-rooms">continuous integration</a>. 
+The build status can be seen at the beginning of this README.
+
+The way it works is that Travis configures a hook with GitHub so once we push, it will start the build process and test the application.
+The Travis configuration file is .travis.yml.
+
+The build process can be summarized as:
+- A developer checks code into GitHub
+- Travis spawns a VM and clones the new code
+- It then runs the scripts mentioned in the configurations file which:
+    - Install Couchbase
+    - Setups the database
+    - Installs the NPM dependencies
+    - Starts the services
+- After all the configuration has been done it then runs all the tests
+    
 
 #Conslusion
 
