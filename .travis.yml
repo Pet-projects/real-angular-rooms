@@ -2,11 +2,11 @@ language: node_js
 node_js:
    - "0.10"
 
-cache:
-  directories:
-    - frontEnd/node_modules
-    - frontEnd/bower_components
-    - test/node_modules
+#cache:
+#  directories:
+#    - frontEnd/node_modules
+#    - frontEnd/bower_components
+#    - test/node_modules
 
 before_install:
   # LibCouchbase
@@ -34,8 +34,8 @@ install:
   - ./run.sh install
 
 script:
-  - ./run.sh start
   - ./run.sh db-seed
+  - ./run.sh start
   - ./run.sh test
   - ./run.sh stop
   - ./run.sh show-logs
