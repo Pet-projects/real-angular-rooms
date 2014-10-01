@@ -55,9 +55,6 @@ In the api we are using:
 - <a href="http://gruntjs.com/">Grunt</a> to build & deploy the API; 
 
 This project is OS agnostic, at least for now :)
-Follow the next steps to run it on your computer.
-
-Feel free to fork it or help us to improve this PoC (here is the [roadmap](#roadmap)).
 
 #Top level architecture
 
@@ -89,7 +86,6 @@ Follow the [How to start the project](#how-to-start-the-project) and install the
 We are using a lot of amazing technologies, but don't worry, all of them will be automatically downloaded using NPM or Bower for you, just follow the [How to start the project](#how-to-start-the-project).
 
 #How to start the project
-
 
 Make sure you have the necessary <a href="https://github.com/julianghionoiu/real-angular-rooms#dependencies">dependencies installed</a> and cloned the project.
 
