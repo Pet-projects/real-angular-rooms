@@ -59,6 +59,10 @@ Follow the next steps to run it on your computer.
 
 Feel free to fork it or help us to improve this PoC (here is the [roadmap](#roadmap)).
 
+#Top level architecture
+
+![top level architecture](https://www.lucidchart.com/publicSegments/view/542c0d3c-7fb8-4ebc-adae-6b6f0a00593a/image.png =500px)
+
 #Dependencies
 
 To run this project you will need the following technologies installed in your computer:
