@@ -32,7 +32,7 @@ before_install:
 install:
   - ./run.sh install
   - ./run.sh db-setup
-  - sleep 10 # Let Couchbase initialize properly
+  - sleep 30 # Let Couchbase initialize properly
   - ./run.sh db-seed
   - sleep 30 # Let Couchbase index properly
 
