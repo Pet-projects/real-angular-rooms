@@ -64,6 +64,7 @@ function performStart {
     inFront "npm run status"
     inBack "npm run status"
     curl -L 'http://localhost:3000'
+    curl -L 'http://localhost:3000/api/rooms'
 }
 
 
