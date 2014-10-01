@@ -20,7 +20,7 @@
     "scripts": {
         "preinstall": "npm install ../db/setup && npm install ../db/query",
 
-        "pretest": "npm install && forever start node_modules/.bin/phantomjs --webdriver=localhost:9000",
+        "pretest": "npm install && forever start node_modules/.bin/phantomjs --webdriver=localhost:9000 && sleep 5",
         "test" : "npm run protractor",
         "posttest": "forever stop node_modules/.bin/phantomjs",
 
