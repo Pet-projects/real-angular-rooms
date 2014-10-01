@@ -631,7 +631,32 @@ You can see the way the dependencies are defined and the basic commands like "st
 
 
 ### Bower
+
+We are using bower to manage the dependencies of the Angular App. 
+These dependencies are different from the ones from NPM in the sense that they will be delivered to the client as part of the app.
+
+The Bower file looks like:
+
+```json
+{
+  "name": "ngRooms",
+  "version": "0.0.1",
+  "authors": [
+    "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
+    "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
+  ],
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "bootstrap": "3.2.x",
+    "restangular": "1.4.0"
+  }
+}
+```
+
 ### Grunt
+
+We are using Grunt to concatenate and minify all the javascript files that we are sending to the client as part of the Angular App.
 
 #Continuous Integration
 
