@@ -404,9 +404,74 @@ The landing page view (public\domain\landingPage) shows how to use that directiv
 
 ## e2e
 
+Our e2e tests are built with javascript. We are using Jasmine to format our specifications, Protractor as the testing framework and the PageObject pattern to reuse the css selectors in different tests. 
+
 ### Why protractor
+
+Protractor is the best testing framework for e2e tests when you are building an app with AngularJS.
+It can help you to test and handle some AngularJS specific features, for example: 
+
+```js
+this.getListOfRooms = function() {
+    return element.all(by.repeater('room in rooms'));
+};
+```
+
+The <b>element.all</b> function makes it easier to iterate and test the viwes that uses the ng-repeat directive.
+
+As a second example, you could mock your server API asking protractor to use a fake AngularJS module. The fake module could override the real one, which contains the services that consumes your server API. 
+
 ### Specifications
+
+The specification are written with Jasmine. They beggin with a set of one or more "describe" blocks that can contain multiple "it" blocks. 
+
+```js
+describe('As a owner', function() {
+  
+  describe("when I go to the list of rooms", function() {
+
+    beforeEach(function() {
+    	...
+	}
+
+	it('I should see the rooms', function() {
+      	var roomList = roomsPage.getListOfRooms();
+      	expect(roomList.count()).toBe(rooms.length);
+
+    });
+
+    it('I should be able to delete the first room', function() {
+
+      	roomsPage.deleteRoomAtRow(0);
+
+      	var roomList = roomsPage.getListOfRooms();
+      	expect(roomList.count()).toBe(rooms.length - 1);
+    });
+
+    ...
+  });
+
+  ...
+});
+```
+
+The "beforeEach" function will be runned before of each containing/sibling block. In this example, before all the "it" blocks. It is normally used to fake modules or reset server data.
+
+Since the "it" blocks are your actual tests, all of them should have assertions, using the "expec" function.
+
+You can also use some modifiers to make your life easier while testing your app:
+
+```js
+ddescribe(... //Will only run this describe block
+xdescribe(... //Will ignore this describe block
+
+iit(... //Will only run this it block
+xit(... //Will ignore this it block
+```
+
 ### Page objects
+
+
 
 ## Other tools
 
