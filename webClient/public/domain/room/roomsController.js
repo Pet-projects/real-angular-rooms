@@ -1,4 +1,4 @@
-angular.module('lateRooms.domain.room')
+angular.module('ngRooms.domain.room')
 	
 	.controller('RoomsController', 
 		['$scope', '$location', 'RoomService', 

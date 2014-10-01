@@ -1,2 +1,2 @@
-angular.module('lateRooms.domain.landingPage', 
-	['lateRooms.domain.landingPage.directives']);
+angular.module('ngRooms.domain.landingPage',
+	['ngRooms.domain.landingPage.directives']);

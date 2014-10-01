@@ -4,7 +4,7 @@ var landingPage = require('../pageObjects/landingPagePage');
 
 describe('As a client', function () {
 
-    describe("when I go to the landing page of LateRooms", function () {
+    describe("when I go to the landing page of ngRooms", function () {
 
         beforeEach(function () {
 

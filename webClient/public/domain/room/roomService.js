@@ -1,4 +1,4 @@
-angular.module('lateRooms.domain.room')
+angular.module('ngRooms.domain.room')
     
     .factory('RoomService', ['Restangular', function (restangular) {
        

@@ -1,4 +1,4 @@
-var roomModule = angular.module('lateRooms.domain.room',[]);
+var roomModule = angular.module('ngRooms.domain.room',[]);
 
 roomModule.controller('RoomController', 
 	['$scope', 'RoomService', 

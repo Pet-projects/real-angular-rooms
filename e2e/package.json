@@ -1,7 +1,7 @@
 {
-    "name": "LateRoomsEndToEndTests",
+    "name": "NgRoomsEndToEndTests",
     "version": "0.0.1",
-    "description": "End to end tests for LateRooms app.",
+    "description": "End to end tests for NgRooms app.",
     "author": "Matt Davies=",
     "contributors": [
         "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",

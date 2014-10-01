@@ -1,7 +1,7 @@
 {
-    "name": "LateRooms_backend",
+    "name": "NgRooms_backend",
     "version": "0.0.1",
-    "description": "Api to handle LateRooms requests.",
+    "description": "Api to handle NgRooms requests.",
     "author": "Matt Davies=",
     "contributors": [
         "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",

@@ -1,4 +1,4 @@
-angular.module('lateRooms.domain.landingPage.directives')
+angular.module('ngRooms.domain.landingPage.directives')
     
     .directive('sectionCard', ['$location', function ($location) {
         return {

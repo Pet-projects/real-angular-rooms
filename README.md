@@ -224,10 +224,6 @@ grunt build
 
 The outcome will be in the /webClient/prod folder.
 
-#Roadmap
-
-You can have a look at the roadmap of this project on <a href="https://trello.com/b/jadAtdpV/laterooms">this trello board</a>.
-
 #Implementation details
 
 ## webClient
@@ -318,7 +314,7 @@ In the definiotion of the controller you will inform its dependecies, you could 
 Here is an example of a controllers that does just that:
 
 ```js
-angular.module('lateRooms.domain.room')
+angular.module('ngRooms.domain.room')
 	
 	.controller('RoomsController', 
 		['$scope', '$location', 'RoomService', 
@@ -363,7 +359,7 @@ They are more commonly used for fetching data from the server.
 In this example we have an implementation of a factory:
 
 ```js
-angular.module('lateRooms.domain.room')
+angular.module('ngRooms.domain.room')
     
     .factory('RoomService', ['Restangular', function (restangular) {
        

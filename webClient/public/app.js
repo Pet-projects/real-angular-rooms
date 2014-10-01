@@ -1,7 +1,7 @@
-angular.module('lateRooms', [
+angular.module('ngRooms', [
   'ngRoute',
   'restangular',
-  'lateRooms.domain'
+  'ngRooms.domain'
 ]).
 
 config(['$routeProvider', '$locationProvider', 'RestangularProvider', 
