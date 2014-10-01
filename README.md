@@ -484,8 +484,10 @@ db.deleteRoom(id, callback);
 
 ## e2e
 
-<<<<<<< HEAD
 Our e2e tests are built with javascript. We are using Jasmine to format our specifications, Protractor as the testing framework and the PageObject pattern to reuse the css selectors in different tests. 
+
+The development of the application has been driven by full End-to-End tests. 
+These tests exercise the webClient using a WebDriver based testing framework and control the database using the DB-Setup module.
 
 ### Why protractor
 
@@ -501,9 +503,6 @@ this.getListOfRooms = function() {
 The <b>element.all</b> function makes it easier to iterate and test the viwes that uses the ng-repeat directive.
 
 As a second example, you could mock your server API asking protractor to use a fake AngularJS module. The fake module could override the real one, which contains the services that consumes your server API. 
-=======
-The development of the application has been driven by full End-to-End tests. 
-These tests exercise the webClient using a WebDriver based testing framework and control the database using the DB-Setup module.
 
 ### Why protractor
 
@@ -511,7 +510,6 @@ We used <a href="https://github.com/angular/protractor">Protractor</a> as a test
 The tests are thus easier to read and understand.
 
 In order to run tests fast in a CI server we used Protractor in conjunction with PhantomJs.
->>>>>>> origin/master
 
 ### Specifications
 
