@@ -14,7 +14,7 @@ var rooms = [
     { id: 5, name: "Premium", address: "Piccadilly" }];
 
 describe('As a owner', function() {
-  
+
   describe("when I go to the list of rooms", function() {
 
     beforeEach(function() {
@@ -48,19 +48,19 @@ describe('As a owner', function() {
     });
 
     it('I should be able to go to edit room feature', function() {
-        
+
         roomsPage.editRoomAtRow(0)
 
         expect(browser.getCurrentUrl()).toContain('/rooms/edit/1');
     });
 
     it('I should be able to go to the new room feature', function() {
-        
+
         roomsPage.newRoom.click()
 
         expect(browser.getCurrentUrl()).toContain('/rooms/new');
     });
 
-  });  
+  });
 
 });

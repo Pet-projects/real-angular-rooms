@@ -77,7 +77,23 @@ We are using a lot of amazing technologies, but don't worry, all of them will be
 
 #How to start the project
 
-Make sure you have the necessary <a href="https://github.com/julianghionoiu/real-angular-rooms#dependencies">dependencies installed</a> and download the project.
+Make sure you have the necessary <a href="https://github.com/julianghionoiu/real-angular-rooms#dependencies">dependencies installed</a> and cloned the project.
+
+## On Linux/OSX:
+
+In the root folder of the project run:
+
+```shell
+./run.sh install
+```
+
+then start the services (webClient and API):
+
+```shell
+./run.sh start
+```
+
+## On Windows:
 
 #### Install node packages and run the API project:
 
@@ -125,10 +141,18 @@ You should now be able to navigate to the web app, just go to <a href="http://lo
 
 #Running the tests
 
-With both API and webClient running go to the e2e folder (/e2e).
-Now run the following command:
+With both API and webClient running.
+
+On Linux/OSX:
 
 ```shell
+./run.sh test
+```
+
+On Windows:
+
+```shell
+cd ./e2e
 npm test
 ```
 
@@ -396,14 +420,71 @@ Coming back to our example, the featureLink.js file is defining some parameters,
 The featureLink.html uses those parameters and the link function.
 The landing page view (public\domain\landingPage) shows how to use that directive.
 
-## api
+## API
+
+The component which holds all the business logic is called the API. This is a RESTful application exposes resources such as "rooms".
 
 ### Why node.js and restify
+
+The purpose of this small project was to test drive a full web application stack based on Node.js.
+<a href="http://mcavage.me/node-restify/">Restify</a> is a small framework that is aimed at creating REST services.
+From the developer:
+Restify is a framework that gives you absolute control over interactions with HTTP and full observability into the latency and characteristics of your applications.
+
+
 ### Routes
+
+Basicaly, restify is mapping resource urls to functions.
+This is the whole backend:
+
+```js
+module.exports = function(server){
+	server.get('/rooms', function(req, res, next) {
+        db.getRooms(function(rooms) {
+            res.send(200, rooms);
+            return next();
+        });
+    });
+
+    server.del('/rooms/:id', function (req, res, next) {
+        var id = parseInt(req.params.id);
+
+        db.deleteRoom(id, function() {
+            res.send();
+            return next();
+        });
+    });
+
+};
+```
+
+As you can see, the backend performs simple CRUD operations on the database.
+
 ### CouchDB API
+
+The code that interacts with the database can be found in the ./db folder and it is structured in two NPM modules.
+ 
+#### DB-Setup
+
+The database setup module is responsible for programmaticaly creating a Couchbase bucket and the required views.
+This is useful for testing and for deployment.
+
+The module communicates with the Couchbase server using the <a href="http://docs.couchbase.com/couchbase-manual-2.1/">REST API</a>.
+
+
+#### DB-Query
+
+This module is responsible for CRUD operations on the couchbase bucket. 
+It is a wrapper around the <a href="https://www.npmjs.org/package/couchbase">Couchnode library</a> and exposes methods such as:
+
+```js
+db.getRooms(callback)
+db.deleteRoom(id, callback);
+```
 
 ## e2e
 
+<<<<<<< HEAD
 Our e2e tests are built with javascript. We are using Jasmine to format our specifications, Protractor as the testing framework and the PageObject pattern to reuse the css selectors in different tests. 
 
 ### Why protractor
@@ -420,6 +501,17 @@ this.getListOfRooms = function() {
 The <b>element.all</b> function makes it easier to iterate and test the viwes that uses the ng-repeat directive.
 
 As a second example, you could mock your server API asking protractor to use a fake AngularJS module. The fake module could override the real one, which contains the services that consumes your server API. 
+=======
+The development of the application has been driven by full End-to-End tests. 
+These tests exercise the webClient using a WebDriver based testing framework and control the database using the DB-Setup module.
+
+### Why protractor
+
+We used <a href="https://github.com/angular/protractor">Protractor</a> as a testing framework because it was tailor specificaly for testing an Angular app.
+The tests are thus easier to read and understand.
+
+In order to run tests fast in a CI server we used Protractor in conjunction with PhantomJs.
+>>>>>>> origin/master
 
 ### Specifications
 
@@ -482,6 +574,23 @@ xit(... //Will ignore this it block
 #Testing strategy
 
 #Continuous Integration
+
+We used GitHub and Travis for <a href="https://travis-ci.org/julianghionoiu/real-angular-rooms">continuous integration</a>. 
+The build status can be seen at the beginning of this README.
+
+The way it works is that Travis configures a hook with GitHub so once we push, it will start the build process and test the application.
+The Travis configuration file is .travis.yml.
+
+The build process can be summarized as:
+- A developer checks code into GitHub
+- Travis spawns a VM and clones the new code
+- It then runs the scripts mentioned in the configurations file which:
+    - Install Couchbase
+    - Setups the database
+    - Installs the NPM dependencies
+    - Starts the services
+- After all the configuration has been done it then runs all the tests
+    
 
 #Conslusion
 
