@@ -536,10 +536,6 @@ The <b>element.all</b> function makes it easier to iterate and test the viwes th
 
 As a second example, you could mock your server API asking protractor to use a fake AngularJS module. The fake module could override the real one, which contains the services that consumes your server API. 
 
-### Why protractor
-
-We used <a href="https://github.com/angular/protractor">Protractor</a> as a testing framework because it was tailor specificaly for testing an Angular app.
-The tests are thus easier to read and understand.
 
 In order to run tests fast in a CI server we used Protractor in conjunction with PhantomJs.
 
@@ -644,12 +640,12 @@ The Travis configuration file is .travis.yml.
 The build process can be summarized as:
 - A developer checks code into GitHub
 - Travis spawns a VM and clones the new code
-- It then runs the scripts mentioned in the configurations file which:
-    - Install Couchbase
+- It then runs the scripts mentioned in the configuration file which:
+    - Installs Couchbase
     - Setups the database
     - Installs the NPM dependencies
     - Starts the services
-- After all the configuration has been done it then runs all the tests
+- It runs all the tests
     
 
 #Conslusion
