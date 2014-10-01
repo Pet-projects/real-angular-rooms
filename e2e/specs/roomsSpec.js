@@ -4,7 +4,8 @@ var roomsPage = require('../pageObjects/roomsPage');
 var dbAdmin = require('rooms-db-setup');
 var db = require('rooms-db-query');
 
-var couchTimeout = 60 * 1000;  // travis needs a long time between buckets
+var couchTimeout = 60 * 1000;  // couch might need a long time before flushing
+var couchIndexing = 1000;  // couch needs to index the newly received data
 
 var rooms = [
     { id: 1, name: "Premium", address: "Barbican" },
@@ -13,24 +14,31 @@ var rooms = [
     { id: 4, name: "B&B ", address: "Westminster" },
     { id: 5, name: "Premium", address: "Piccadilly" }];
 
+var flushAndSeed = function() {
+    var done = false;
+
+    dbAdmin.flush(function() {
+        db.storeRooms(rooms, function(err, result) {
+            console.log('Performed seeding');
+            roomsPage.navigate();
+            done = true;
+        });
+    });
+
+    waitsFor(function(){
+        return done;
+    }, couchTimeout);
+
+    waits(couchIndexing);
+};
+flushAndSeed();
+
 describe('As a owner', function() {
 
   describe("when I go to the list of rooms", function() {
 
     beforeEach(function() {
-        var done = false;
-
-        dbAdmin.flush(function() {
-            db.storeRooms(rooms, function(err, result) {
-                console.log('Performed seeding');
-                roomsPage.navigate();
-                done = true;
-            });
-        });
-
-        waitsFor(function(){
-            return done;
-        }, couchTimeout);
+        roomsPage.navigate();
     });
 
     it('I should see the rooms', function() {
@@ -51,7 +59,7 @@ describe('As a owner', function() {
 
         roomsPage.editRoomAtRow(0)
 
-        expect(browser.getCurrentUrl()).toContain('/rooms/edit/1');
+        expect(browser.getCurrentUrl()).toContain('/rooms/edit/2');
     });
 
     it('I should be able to go to the new room feature', function() {
