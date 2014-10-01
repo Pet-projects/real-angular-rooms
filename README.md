@@ -591,17 +591,47 @@ iit(... //Will only run this it block
 xit(... //Will ignore this it block
 ```
 
-### Page objects
-
-
-
 ## Other tools
 
 ### NPM
+
+We are using NPM as a package manager and also as the runner for the project, using it's scripting capabilities.
+The file that descripes an NPM project is: `package.json`.
+
+For the API project, the `package.json` file looks like:
+
+```json
+{
+    "name": "NgRooms_backend",
+    "version": "0.0.1",
+    "description": "Api to handle NgRooms requests.",
+    "author": "Matt Davies=",
+    "contributors": [
+        "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
+        "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
+    ],
+    "dependencies": {
+        "start-stop-daemon": "0.1.0",
+        "restify": "2.8.2",
+        "couchbase": "2.0.0-dp1",
+        "rooms-db-query": "x"
+    },
+    "scripts": {
+        "preinstall": "npm install ../db/query",
+
+        "prestart": "npm install",
+        "start" : "node daemon.js start",
+        "stop" : "node daemon.js stop",
+        "status": "node daemon.js status"
+    }
+}
+```
+
+You can see the way the dependencies are defined and the basic commands like "start" and "stop" are mapped to source files inside the project.
+
+
 ### Bower
 ### Grunt
-
-#Testing strategy
 
 #Continuous Integration
 
