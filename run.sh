@@ -52,6 +52,11 @@ function performDbSetup {
     inDbSetup "npm run db-setup"
 }
 
+
+function performDbSeed {
+    inDbQuery "npm run db-seed"
+}
+
 function performStart {
     inBack "npm start"
     inFront "npm start"
@@ -83,7 +88,7 @@ function performLogs {
 ####### The arguments
 function usage {
 cat << EOF
-usage: $0 [options] <install|db-setup|start|stop|test|show-logs>
+usage: $0 [options] <install | db-setup | db-seed | start | stop | test | show-logs>
 
 Control the app
 EOF
@@ -100,6 +105,9 @@ case "$1" in
       ;;
    "db-setup")
       performDbSetup
+      ;;
+   "db-seed")
+      performDbSeed
       ;;
    "start")
       performStart

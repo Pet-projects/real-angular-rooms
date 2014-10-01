@@ -11,5 +11,8 @@
         "couchbase": "2.0.0-dp1",
         "underscore": "1.7.0"
     },
-    "main": "./lib/public.js"
+    "main": "./lib/public.js",
+    "scripts": {
+        "db-seed": "node ./scripts/seed.js"
+    }
 }
