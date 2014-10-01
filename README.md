@@ -66,6 +66,15 @@ To run this project you will need the following technologies installed in your c
 - <a href="http://nodejs.org/">node.js</a> 
 - <a href="http://www.couchbase.com/download?gclid=CjwKEAjwhqShBRDS95LciqqaonISJADj1rgao_MufRblcLFRxicB4rLM9aVADWi-sTeYJui-CaKQphoCZWLw_wcB">CouchBase</a> 
 
+Download and install Couchbase. It has been tested with Couchbase 2.5.0-dp1, 2.2.0, 2.1.1.
+For a sure bet, try installing Coucbase 2.2.0:
+- OSX: http://packages.couchbase.com/releases/2.2.0/couchbase-server-enterprise_2.2.0_x86_64.zip
+- Linux (Debian): http://packages.couchbase.com/releases/2.2.0/couchbase-server-enterprise_2.2.0_x86_64.deb 
+- Windows: http://packages.couchbase.com/releases/2.2.0/couchbase-server-enterprise_2.2.0_x86_64.setup.exe
+
+Important ! The default installation will locate all the RAM to the bucket "default".
+To be able to run the project you need to allow the cration of new buckets by changing the quota for the bucket "default" to a smaller value such as 200Mb
+
 There are some node packages that are dependent on a bunch of other technologies, so you will probably need:
 - <a href="https://www.ruby-lang.org/en/">Ruby</a> 
 - <a href="https://www.python.org/">Python</a> 
@@ -77,6 +86,7 @@ We are using a lot of amazing technologies, but don't worry, all of them will be
 
 #How to start the project
 
+
 Make sure you have the necessary <a href="https://github.com/julianghionoiu/real-angular-rooms#dependencies">dependencies installed</a> and cloned the project.
 
 ## On Linux/OSX:
@@ -87,6 +97,13 @@ In the root folder of the project run:
 ./run.sh install
 ```
 
+Next, you need to setup the database. Make sure you have Couchbase installed and the quota for the bucket "default" is 200Mb.
+
+```shell
+./run.sh db-setup
+./run.sh db-seed
+```
+
 then start the services (webClient and API):
 
 ```shell
@@ -94,6 +111,25 @@ then start the services (webClient and API):
 ```
 
 ## On Windows:
+
+#### Configure the database
+ 
+Open a command line tool and navigate to the Db Setup project root (/db/setup).
+Make sure you have Couchbase installed and the quota for the bucket "default" is 200Mb.
+Now run the following commands:
+
+```shell
+npm install
+npm run db-setup
+```
+
+In order to insert some test data into the database go to Db Query project root (/db/query).
+Run:
+
+```shell
+npm install
+npm run db-seed
+```
 
 #### Install node packages and run the API project:
 
