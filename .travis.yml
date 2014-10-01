@@ -30,14 +30,12 @@ before_install:
   - cp .travis.private-config.js ./db/setup/private-config.js
 
 install:
-  - ./run.sh install
   - ./run.sh db-setup
-  - sleep 30 # Let Couchbase initialize properly
-  - ./run.sh db-seed
-  - sleep 30 # Let Couchbase index properly
+  - ./run.sh install
 
 script:
   - ./run.sh start
+  - ./run.sh db-seed
   - ./run.sh test
   - ./run.sh stop
   - ./run.sh show-logs

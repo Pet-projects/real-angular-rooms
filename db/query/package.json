@@ -13,6 +13,7 @@
     },
     "main": "./lib/public.js",
     "scripts": {
+        "predb-seed": "npm install",
         "db-seed": "node ./scripts/seed.js"
     }
 }

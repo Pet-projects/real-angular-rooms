@@ -12,6 +12,7 @@
     },
     "main": "./lib/couchPublic.js",
     "scripts": {
+        "predb-setup": "npm install",
         "db-setup": "node ./scripts/setup.js",
         "db-teardown": "node ./scripts/teardown.js"
     }
