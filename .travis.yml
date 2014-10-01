@@ -34,7 +34,7 @@ install:
   - ./run.sh db-setup
   - sleep 10 # Let Couchbase initialize properly
   - ./run.sh db-seed
-  - sleep 10 # Let Couchbase index properly
+  - sleep 30 # Let Couchbase index properly
 
 script:
   - ./run.sh start
