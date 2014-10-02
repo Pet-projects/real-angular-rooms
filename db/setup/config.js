@@ -3,7 +3,7 @@ var extend = require('node.extend');
 var privateSetup = require('./private-config.js');
 var mainConfig = {};
 
-mainConfig.adminUser = 'admin';
+mainConfig.adminUser = 'Administrator';
 //config.adminPassword = ''; - provided through private config
 mainConfig.host = 'localhost';
 mainConfig.adminPort = '8091';
