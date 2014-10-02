@@ -97,7 +97,17 @@ In the root folder of the project run:
 ./run.sh install
 ```
 
-Next, you need to setup the database. Make sure you have Couchbase installed and the quota for the bucket "default" is 200Mb.
+Next, create a file called _private-config.js_ in the _db_ folder. The minimal content of this file should be:
+
+```js
+var config = {
+  adminPassword: '<your Couchbase administrator password>''
+};
+
+module.exports = config;
+```
+
+Now, you need to setup the database. Make sure you have Couchbase installed and the quota for the bucket "default" is 200Mb.
 
 ```shell
 ./run.sh db-setup

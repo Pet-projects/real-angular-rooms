@@ -8,7 +8,8 @@
         "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
     ],
     "dependencies": {
-        "request-promise": "0.2.0"
+        "request-promise": "0.2.0",
+        "node.extend": "1.1.x"
     },
     "main": "./lib/couchPublic.js",
     "scripts": {
