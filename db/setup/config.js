@@ -1,14 +1,15 @@
 // This is a configuration file
+var extend = require('node.extend');
 var privateSetup = require('./private-config.js');
-var config = privateSetup;
+var mainConfig = {};
 
-config.adminUser = 'Administrator';
+mainConfig.adminUser = 'admin';
 //config.adminPassword = ''; - provided through private config
-config.host = 'localhost';
-config.adminPort = '8091';
-config.designPort = '8092';
-config.bucket = 'roomsbucket';
-config.password = 'breakfast';
+mainConfig.host = 'localhost';
+mainConfig.adminPort = '8091';
+mainConfig.designPort = '8092';
+mainConfig.bucket = 'roomsbucket';
+mainConfig.password = 'breakfast';
 
 var ddoc = {
     "language" : "javascript",
@@ -19,9 +20,11 @@ var ddoc = {
     }
 };
 
-config.designDocument = {
+mainConfig.designDocument = {
     name: 'ddoc',
     content: JSON.stringify(ddoc)
 };
+
+var config = extend(true, mainConfig, privateSetup);
 
 module.exports = config;
