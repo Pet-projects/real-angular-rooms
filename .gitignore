@@ -5,3 +5,4 @@ prod
 */log/app*
 npm-debug.log
 private-config.js
+.DS_Store
