@@ -39,3 +39,17 @@ script:
   - ./run.sh test
   - ./run.sh stop
   - ./run.sh show-logs
+
+before_deploy: "echo 'ready?'"
+deploy:
+  provider: s3
+  access_key_id: "wSekH7A+73aoF6+qUZvfdULPb0elsYbOmvCwdZa7S2UA13E8Z1piXzzJtUk+xvdifDPNTSyt7V11JKo2Avebb3Hejueh/7A8OHhu4+9yAOGfCTUJ3GuKXBLwKH4SlOubeetcG3ZcXtSViW78sd55zrSZ+6lUEu5r/YohS5itKYA="
+  secret_access_key: "Ik5uTJGCqjEpOxPvqvv1SLNDu2dLgcKzW1i730AC5o/v0slu8pQO3cmS7fGayVuNIcZwaNs98IWV/kFYvPbFL4/Dg4WVYMS/1DibL0zss6e2+XI1zuXZQJo0k2ERAPqRLqsNK4aB5Vk6HDbSrYC9VFcjMe7R5B7Z9lrpXjETcTs="
+  bucket: "jgh-angular-rooms"
+  skip_cleanup: true
+  region: eu-west-1
+  detect_encoding: true
+  local-dir: build
+  upload-dir: artifacts
+after_deploy:
+  - "echo 'Done deploying'"
