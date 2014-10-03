@@ -31,13 +31,13 @@ before_install:
 
 install:
   - sleep 10
-  - ./run.sh db-setup
+  - ./db.sh setup
   - ./run.sh install
 
 script:
-  - ./run.sh db-seed
+  - ./db.sh seed
   - ./run.sh start
-  - ./run.sh test
+  - ./test.sh run
   - ./run.sh stop
   - ./run.sh show-logs
 
