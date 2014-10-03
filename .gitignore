@@ -6,3 +6,4 @@ prod
 npm-debug.log
 private-config.js
 .DS_Store
+build

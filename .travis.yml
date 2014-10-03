@@ -41,7 +41,9 @@ script:
   - ./run.sh stop
   - ./run.sh show-logs
 
-before_deploy: "echo 'ready?'"
+before_deploy:
+  - mkdir build
+  - tar zcvf ./build/angular-rooms.tar.gz api db e2e webClient run.sh
 deploy:
   provider: s3
   access_key_id:
