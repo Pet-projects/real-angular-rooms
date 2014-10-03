@@ -43,7 +43,9 @@ script:
 
 before_deploy:
   - mkdir build
-  - tar zcvf ./build/angular-rooms.tar.gz api db e2e webClient run.sh
+  - tar -zcf ./build/db-setup.tar.gz db run.sh
+  - tar  --exclude='./db/setup' -zcf ./build/application.tar.gz api db webClient run-prod.sh
+
 deploy:
   provider: s3
   access_key_id:
@@ -56,5 +58,6 @@ deploy:
   detect_encoding: true
   local-dir: build
   upload-dir: artifacts
+
 after_deploy:
   - "echo 'Done deploying'"
