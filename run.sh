@@ -27,16 +27,8 @@ function inFront {
     inFolder "${SCRIPT_DIR}/webClient" "$1"
 }
 
-function inDbSetup {
-    inFolder "${SCRIPT_DIR}/db/setup" "$1"
-}
-
 function inDbQuery {
     inFolder "${SCRIPT_DIR}/db/query" "$1"
-}
-
-function inTest {
-    inFolder "${SCRIPT_DIR}/e2e" "$1"
 }
 
 
@@ -44,22 +36,12 @@ function performInstall {
     inDbQuery "npm install"
     inBack "npm install"
     inFront "npm install"
-    inTest "npm install"
 }
 
 function performRebuild {
     inDbQuery "npm rebuild"
     inBack "npm rebuild"
     inFront "npm rebuild"
-    inTest "npm rebuild"
-}
-
-function performDbSetup {
-    inDbSetup "npm run db-setup"
-}
-
-function performDbSeed {
-    inDbQuery "npm run db-seed"
 }
 
 function performStart {
@@ -79,10 +61,6 @@ function performStop {
     inBack "npm stop"
 }
 
-function performTest {
-    inTest "npm test"
-}
-
 function performLogs {
     echo -e "${GREEN}>>>>>>> Front end logs ${NC}"
     inFront "cat ./log/appOutFile.log"
@@ -95,7 +73,7 @@ function performLogs {
 ####### The arguments
 function usage {
 cat << EOF
-usage: $0 [options] <install | rebuild | db-setup | db-seed | start | stop | test | show-logs>
+usage: $0 [options] <install | rebuild  start | stop | show-logs>
 
 Control the app
 EOF
@@ -113,20 +91,11 @@ case "$1" in
    "rebuild")
       performRebuild
       ;;
-   "db-setup")
-      performDbSetup
-      ;;
-   "db-seed")
-      performDbSeed
-      ;;
    "start")
       performStart
       ;;
    "stop")
       performStop
-      ;;
-   "test")
-      performTest
       ;;
    "show-logs")
       performLogs
