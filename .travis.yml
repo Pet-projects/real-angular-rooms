@@ -30,6 +30,7 @@ before_install:
   - cp .travis.private-config.js ./db/setup/private-config.js
 
 install:
+  - sleep 10
   - ./run.sh db-setup
   - ./run.sh install
 
