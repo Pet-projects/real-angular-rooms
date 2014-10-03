@@ -44,7 +44,7 @@ script:
 before_deploy:
   - mkdir build
   - tar -zcf ./build/db-setup.tar.gz db run.sh
-  - tar  --exclude='./db/setup' -zcf ./build/application.tar.gz api db webClient run-prod.sh
+  - tar -zcf ./build/application.tar.gz api db/query webClient run-prod.sh
 
 deploy:
   provider: s3
