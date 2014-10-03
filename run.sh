@@ -59,8 +59,9 @@ function performDbSeed {
 
 function performStart {
     inBack "npm start"
+    sleep 3
     inFront "npm start"
-    sleep 1
+    sleep 3
     inFront "npm run status"
     inBack "npm run status"
     curl -L 'http://localhost:3000' && echo ""
