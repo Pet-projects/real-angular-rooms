@@ -110,8 +110,8 @@ module.exports = config;
 Now, you need to setup the database. Make sure you have Couchbase installed and the quota for the bucket "default" is 200Mb.
 
 ```shell
-./run.sh db-setup
-./run.sh db-seed
+./db.sh setup
+./db.sh seed
 ```
 
 then start the services (webClient and API):
@@ -192,7 +192,7 @@ With both API and webClient running.
 On Linux/OSX:
 
 ```shell
-./run.sh test
+./test.sh run
 ```
 
 On Windows:
