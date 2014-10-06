@@ -97,7 +97,7 @@ In the root folder of the project run:
 ./run.sh install
 ```
 
-Next, create a file called _private-config.js_ in the _db_ folder. The minimal content of this file should be:
+Next, create a file called _private-config.js_ in the _db/setup_ folder. The minimal content of this file should be:
 
 ```js
 var config = {
