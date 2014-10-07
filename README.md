@@ -129,7 +129,7 @@ Make sure you have Couchbase installed and the quota for the bucket "default" is
 Now run the following commands:
 
 ```shell
-npm install
+npm install --msvs_version=2012 (optional, use your version of a c++ compiler, I am using VS 2012)
 npm run db-setup
 ```
 
@@ -137,7 +137,7 @@ In order to insert some test data into the database go to Db Query project root 
 Run:
 
 ```shell
-npm install
+npm install --msvs_version=2012 (optional, use your version of a c++ compiler, I am using VS 2012)
 npm run db-seed
 ```
 
@@ -147,7 +147,7 @@ Open a command line tool and navigate to the API project root (/api).
 Now run the following commands:
 
 ```shell
-npm install
+npm install --msvs_version=2012 (optional, use your version of a c++ compiler, I am using VS 2012)
 ```
 
 Followed by:
