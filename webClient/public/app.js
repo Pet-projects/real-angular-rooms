@@ -1,10 +1,11 @@
 angular.module('ngRooms', [
   'ngRoute',
   'restangular',
+  'ngRooms.common',
   'ngRooms.domain'
 ]).
 
-config(['$routeProvider', '$locationProvider', 'RestangularProvider', 
+config(['$routeProvider', '$locationProvider', 'RestangularProvider',  
     function ($routeProvider, $locationProvider, restangularProvider) {
 
     $routeProvider.when('/analytics',       { 
