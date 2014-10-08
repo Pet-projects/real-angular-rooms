@@ -9,6 +9,7 @@
     "angular": "1.2.x",
     "angular-route": "1.2.x",
     "bootstrap": "3.2.x",
-    "restangular": "1.4.0"
+    "restangular": "1.4.0",
+    "satellizer": "~0.7.1"
   }
 }

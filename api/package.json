@@ -1,24 +1,26 @@
 {
-    "name": "NgRooms_backend",
-    "version": "0.0.1",
-    "description": "Api to handle NgRooms requests.",
-    "author": "Matt Davies=",
-    "contributors": [
-        "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
-        "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
-    ],
-    "dependencies": {
-        "start-stop-daemon": "0.1.0",
-        "restify": "2.8.2",
-        "couchbase": "2.0.0-dp1",
-        "rooms-db-query": "x"
-    },
-    "scripts": {
-        "preinstall": "npm install ../db/query",
-
-        "prestart": "npm install",
-        "start" : "node daemon.js start",
-        "stop" : "node daemon.js stop",
-        "status": "node daemon.js status"
-    }
+  "name": "NgRooms_backend",
+  "version": "0.0.1",
+  "description": "Api to handle NgRooms requests.",
+  "author": "Matt Davies=",
+  "contributors": [
+    "Julian Ghionoiu <julian.ghionoiu@valtech.co.uk>",
+    "Rafael Audy Glanzner <rafael.glanzner@valtech.co.uk>"
+  ],
+  "dependencies": {
+    "couchbase": "2.0.0-dp1",
+    "jwt-simple": "0.2.0",
+    "moment": "2.8.3",
+    "request": "2.45.0",
+    "restify": "2.8.2",
+    "rooms-db-query": "x",
+    "start-stop-daemon": "0.1.0"
+  },
+  "scripts": {
+    "preinstall": "npm install ../db/query",
+    "prestart": "npm install",
+    "start": "node daemon.js start",
+    "stop": "node daemon.js stop",
+    "status": "node daemon.js status"
+  }
 }

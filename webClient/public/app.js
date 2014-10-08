@@ -1,12 +1,13 @@
 angular.module('ngRooms', [
   'ngRoute',
   'restangular',
+  'satellizer',
   'ngRooms.common',
   'ngRooms.domain'
 ]).
 
-config(['$routeProvider', '$locationProvider', 'RestangularProvider',  
-    function ($routeProvider, $locationProvider, restangularProvider) {
+config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProvider',   
+    function ($routeProvider, $locationProvider, $authProvider, restangularProvider) {
 
     $routeProvider
         .when('/', { templateUrl: '/domain/landingPage/landingPage.html' })
@@ -21,16 +22,20 @@ config(['$routeProvider', '$locationProvider', 'RestangularProvider',
         	controller: 'RoomsController' })
         .when('/rooms/new', { 
     		templateUrl: '/domain/room/room.html',
-        	controller: 'RoomController',
-            access: userRoles.user })
+        	controller: 'RoomController' })
         .when('/rooms/edit/:id', { 
             templateUrl: '/domain/room/room.html',
-            controller: 'RoomController',
-            access: userRoles.user });
+            controller: 'RoomController' });
 
     $routeProvider.otherwise({ redirectTo: '/rooms' });
     
     $locationProvider.html5Mode(true);
 
     restangularProvider.setBaseUrl('/api');
+
+    $authProvider.google({      
+      url: 'api/auth/google',
+      clientId: '279805487456-u3c7d5rpqqenunrgt2ia0p91h1198n4b.apps.googleusercontent.com'
+    });
+
 }]);

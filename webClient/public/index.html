@@ -11,10 +11,34 @@
 </head>
 	<body>
 		<div class="container"> 
-			<div class="text-center">
-		        <h1 >Angular Rooms Extranet Navigation</h1>
-		        <b>RATES & AVAILABILITY</b>  
-	        </div>   
+			<div class="row">
+				<div class="col-md-8 text-center">
+					<h1 >Angular Rooms Extranet Navigation</h1>
+			        <b>RATES & AVAILABILITY</b> 
+			    </div>
+			    <div class="col-md-4 text-center" ng-controller="AuthenticationController">
+			    	<div ng-if="!isAuthenticated()">
+				    	<h1>
+				    		Please log in
+						</h1>
+						<div>
+							<a ng-click="authenticateWithGoogle()" class="btn" href="#">
+					          	<i class="glyphicon glyphicon-envelope"></i> with google 
+					        </a>  
+						</div>
+					</div>
+					<div ng-if="isAuthenticated()">
+						<h1>
+				    		Hello {{displayName}}
+						</h1>
+						<div>
+						  	<a ng-click="logout()" class="btn" href="#">
+					          	<i class="glyphicon glyphicon-envelope"></i> logout 
+					        </a>  
+						</div>				        
+			        </div>
+			    </div>
+	        </div>
 
 	        <br>
 			
@@ -37,9 +61,15 @@
 		<script src="bower_components/restangular/dist/restangular.js"></script>
 		<!-- /build -->
 
+		<!-- build:js //cdn.jsdelivr.net/satellizer/0.7.1/satellizer.min.js -->
+		<script src="bower_components/satellizer/satellizer.js"></script>
+		<!-- /build -->
+
 		<!-- build:js js/app.js -->
 		<script src="app.js"></script>
 		<script src="common/common.js"></script>
+		<script src="common/security/accountService.js"></script>
+		<script src="common/security/authenticationController.js"></script>	
 		<script src="domain/domain.js"></script>
 		<script src="domain/landingPage/landingPageController.js"></script>
 		<script src="domain/landingPage/directives/directives.js"></script>
