@@ -1,14 +1,14 @@
 var securityModule = angular.module('ngRooms.common.security',[]);
 
 securityModule.factory('AccountService', ['Restangular', function (restangular) {
-       
-       var domain = 'auth';
 
-       return {
+    var domain = 'auth';
 
-            get: function() {
-                return restangular.all(domain).customGET("me");               
-            }
+    return {
 
-        };
-    }]);
+        get: function () {
+            return restangular.all(domain).customGET("me");
+        }
+
+    };
+}]);

@@ -1,25 +1,32 @@
 angular.module('ngRooms.common.security')
-  
-  .controller('AuthenticationController', 
-    ['$scope', '$auth', 'AccountService', function($scope, $auth, accountService) {
 
-      $scope.authenticateWithFacebook = function() {
-        $auth.authenticate('facebook');
-      };
+  .controller('AuthenticationController',
+    ['$scope', '$auth', 'AccountService', function ($scope, $auth, accountService) {
 
-      $scope.authenticateWithGoogle = function() {
-        $auth.authenticate('google');
-      };
+        $scope.authenticateWithFacebook = function () {
+            $auth.authenticate('facebook');
+        };
 
-       $scope.isAuthenticated = function() {
-        return $auth.isAuthenticated();
-      };
+        $scope.authenticateWithGoogle = function () {
+            $auth.authenticate('google').then(function (response) {
+                $scope.getAccount();
+            });
+        };
 
-      $scope.logout = function() {
-          return $auth.logout();
-      };
+        $scope.isAuthenticated = function () {
+            return $auth.isAuthenticated();
+        };
 
-      accountService.get().then(function(account) {
-          $scope.displayName = account.displayName;
-      });
-  }]);
+        $scope.logout = function () {
+            return $auth.logout();
+        };
+
+        $scope.getAccount = function () {
+            accountService.get().then(function (account) {
+                $scope.displayName = account.displayName;
+            });
+        };
+
+        $scope.getAccount();
+
+    }]);
