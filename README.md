@@ -482,7 +482,7 @@ This is the whole backend:
 ```js
 module.exports = function(server){
 	server.get('/rooms', function(req, res, next) {
-        db.getRooms(function(rooms) {
+        db.rooms.getList(function(rooms) {
             res.send(200, rooms);
             return next();
         });
@@ -491,7 +491,7 @@ module.exports = function(server){
     server.del('/rooms/:id', function (req, res, next) {
         var id = parseInt(req.params.id);
 
-        db.deleteRoom(id, function() {
+        db.rooms.delete(id, function() {
             res.send();
             return next();
         });
@@ -520,8 +520,8 @@ This module is responsible for CRUD operations on the couchbase bucket.
 It is a wrapper around the <a href="https://www.npmjs.org/package/couchbase">Couchnode library</a> and exposes methods such as:
 
 ```js
-db.getRooms(callback)
-db.deleteRoom(id, callback);
+db.rooms.getList(callback)
+db.rooms.delete(id, callback);
 ```
 
 ## e2e

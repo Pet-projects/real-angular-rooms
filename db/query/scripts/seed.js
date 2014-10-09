@@ -9,11 +9,11 @@ var rooms = [
     { id: 4, name: "B&B ", address: "Westminster" },
     { id: 5, name: "Premium", address: "Piccadilly" }];
 
-db.storeRoom(rooms[0], function(err, result) {
+db.rooms.store(rooms[0], function(err, result) {
     console.log(result);
 } );
 
-db.storeRooms(rooms, function(err, result) {
+db.rooms.storeList(rooms, function(err, result) {
     console.log(result);
-    db.shutdown();
+    db.rooms.shutdown();
 } );

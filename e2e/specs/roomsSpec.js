@@ -32,7 +32,7 @@ describe('As a owner', function() {
 
     beforeEach(function() {
         var done = false;
-        db.storeRooms(rooms, function(err, result) {
+        db.rooms.storeList(rooms, function(err, result) {
             console.log('Performed seeding');
             roomsPage.navigate();
             done = true;
