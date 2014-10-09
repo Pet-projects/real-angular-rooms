@@ -16,7 +16,7 @@ module.exports = function(query){
             stale: false 
         };
         
-        db.view("ddoc", "all", q).query(function(err, values) {
+        db.view("roomView", "all", q).query(function(err, values) {
             var keys = _.pluck(values, 'id');
 
             db.getMulti(keys, null, function(err, results) {

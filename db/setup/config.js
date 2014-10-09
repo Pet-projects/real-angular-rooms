@@ -11,18 +11,18 @@ mainConfig.designPort = '8092';
 mainConfig.bucket = 'roomsbucket';
 mainConfig.password = 'breakfast';
 
-var ddoc = {
+var roomView = {
     "language" : "javascript",
     "views" : {
         "all" : {
-            "map" :  "function (doc, meta) {\n  emit(meta.id, doc.name);\n}"
+            "map" :  "function (doc, meta) { \n if (doc.type == 'room') { \n emit(doc.id); \n } \n 	}"
         }
     }
 };
 
 mainConfig.designDocument = {
-    name: 'ddoc',
-    content: JSON.stringify(ddoc)
+    name: 'roomView',
+    content: JSON.stringify(roomView)
 };
 
 var config = extend(true, mainConfig, privateSetup);

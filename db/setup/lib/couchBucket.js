@@ -74,20 +74,18 @@ function CouchBucket(config) {
 CouchBucket.prototype.ensureCreated = function(callback) {
     var parentThis = this;
 
-    var thenConfigureDDoc = function() {
+    var thenConfigureRoomView = function() {
         parentThis.configureDesignDocument(callback);
     }
 
     this.retrieve(
         function updateExisting() {
-            parentThis.update(thenConfigureDDoc);
+            parentThis.update(thenConfigureRoomView);
         },
         function createNew() {
-            parentThis.create(thenConfigureDDoc);
+            parentThis.create(thenConfigureRoomView);
         }
     );
-
-
 };
 
 CouchBucket.prototype.retrieve = function(callback, errorCallback) {
