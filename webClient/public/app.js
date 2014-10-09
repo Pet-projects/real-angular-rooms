@@ -18,11 +18,11 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
         .when('/tutorial', { templateUrl: '/domain/tutorial/tutorial.html' })
 
         .when('/rooms', { 
-    		templateUrl: '/domain/room/rooms.html',
-        	controller: 'RoomsController' })
+    		    templateUrl: '/domain/room/rooms.html',
+        	  controller: 'RoomsController' })
         .when('/rooms/new', { 
-    		templateUrl: '/domain/room/room.html',
-        	controller: 'RoomController' })
+    		    templateUrl: '/domain/room/room.html',
+        	  controller: 'RoomController' })
         .when('/rooms/edit/:id', { 
             templateUrl: '/domain/room/room.html',
             controller: 'RoomController' });
@@ -34,8 +34,8 @@ config(['$routeProvider', '$locationProvider', '$authProvider', 'RestangularProv
     restangularProvider.setBaseUrl('/api');
 
     $authProvider.google({      
-      url: 'api/auth/google',
-      clientId: '279805487456-u3c7d5rpqqenunrgt2ia0p91h1198n4b.apps.googleusercontent.com'
+        url: 'api/auth/google',
+        clientId: '279805487456-u3c7d5rpqqenunrgt2ia0p91h1198n4b.apps.googleusercontent.com'
     });
 
 }]);

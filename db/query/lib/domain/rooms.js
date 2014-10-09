@@ -32,14 +32,14 @@ module.exports = function(query){
     };
 
     query.rooms.store = function(room, callback) {
-        db.set(getKey(room), room, callback);
+        db.set(getRoomKey(room), room, callback);
     };
 
     query.rooms.storeList = function(rooms, callback) {
         var docs = {};
 
         rooms.forEach(function(room) {
-            docs[getKey(room)] = { value: room } ;
+            docs[getRoomKey(room)] = { value: room } ;
         });
 
         db.setMulti(docs, {}, callback);
