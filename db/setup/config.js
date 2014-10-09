@@ -20,10 +20,24 @@ var roomView = {
     }
 };
 
-mainConfig.designDocument = {
-    name: 'roomView',
-    content: JSON.stringify(roomView)
+var userView = {
+    "language" : "javascript",
+    "views" : {
+        "all" : {
+            "map" :  "function (doc, meta) { \n if (doc.type == 'user') { \n emit(doc.id); \n } \n 	}"
+        }
+    }
 };
+
+mainConfig.designDocuments = [
+	{
+	    name: 'roomView',
+	    content: JSON.stringify(roomView)
+	},
+	{
+	    name: 'userView',
+	    content: JSON.stringify(userView)
+	}];
 
 var config = extend(true, mainConfig, privateSetup);
 
